@@ -6,17 +6,15 @@ public class PointTest {
 
     @Test
     public void testDistance(){
-      Point p = new Point(2,2,2,2); // Две точки имеют одинаковые координатоы (расстояние должно равняться "0"
-      Assert.assertEquals(p.distance(), 0);
-    }
+      Point p1 = new Point(2,2);
+      Point p2 = new Point(6,8);
+      Assert.assertEquals(p1.distance (p2), 7.211102550927978);
+          }
 /*
- 2 вариант
- Point p = new Point(2,4,6,8);
-      Assert.assertEquals(p.distance(), 5.656854249492381);
-    }
-3 вариант -негативный тест
-Point p = new Point(2,4,6,8);
-      Assert.assertEquals(p.distance(), 5.0);
+      2 вариант -негативный тест
+      Point p1 = new Point(2,2);
+      Point p2 = new Point(6,8);
+      Assert.assertEquals(p1.distance (p2), 5.0);
     }
 */
   }
