@@ -7,6 +7,7 @@ public class Point {
     this.x = x;
     this.y = y;
   }
+
   public double distance(int x, int y) {
     int dx = this.x - x;
     int dy = this.y - y;
