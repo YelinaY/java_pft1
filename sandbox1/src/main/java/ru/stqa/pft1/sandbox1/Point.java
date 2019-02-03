@@ -14,6 +14,7 @@ public class Point {
   }
 
   double distance(Point p) {
+
     return distance(p.x, p.y);
   }
 }
