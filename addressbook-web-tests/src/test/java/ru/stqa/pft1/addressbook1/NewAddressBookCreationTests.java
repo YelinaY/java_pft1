@@ -1,4 +1,4 @@
-package ru.stqa.pft1.addressbook1.tests;
+package ru.stqa.pft1.addressbook1;
 
 
 import java.util.regex.Pattern;
@@ -11,9 +11,7 @@ import static org.testng.Assert.*;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft1.addressbook1.model.GroupDatan;
 import org.openqa.selenium.support.ui.Select;
-
 
 public class NewAddressBookCreationTests {
   FirefoxDriver wd;
@@ -46,7 +44,7 @@ public class NewAddressBookCreationTests {
   }
 
   @Test
-  public void testNewAddressBook(){
+  public void testNewAddressBook() throws Exception {
     wd.get("http://localhost/addressbook/group.php");
     wd.findElement(By.linkText("add new")).click();
     wd.findElement(By.name("firstname")).click();
