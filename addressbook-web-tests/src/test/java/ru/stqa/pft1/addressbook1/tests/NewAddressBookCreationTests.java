@@ -1,4 +1,4 @@
-package ru.stqa.pft1.addressbook1;
+package ru.stqa.pft1.addressbook1.tests;
 
 
 import java.util.concurrent.TimeUnit;
@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.pft1.addressbook1.model.GroupDatan;
 
 public class NewAddressBookCreationTests {
   FirefoxDriver wd;

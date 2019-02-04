@@ -1,4 +1,4 @@
-package ru.stqa.pft1.addressbook1;
+package ru.stqa.pft1.addressbook1.model;
 
 public class GroupDatan {
   private final String usermiddlename;
