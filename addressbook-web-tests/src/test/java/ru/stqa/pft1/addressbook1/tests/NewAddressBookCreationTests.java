@@ -11,11 +11,9 @@ import static org.testng.Assert.*;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-<<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/tests/NewAddressBookCreationTests.java
 import ru.stqa.pft1.addressbook1.model.GroupDatan;
-=======
+
 import org.openqa.selenium.support.ui.Select;
->>>>>>> parent of 7cb18ea... Задание №4: Сделать тесты для создания групп и контактов в адресной книге+ рефакторинг:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
 
 public class NewAddressBookCreationTests {
   FirefoxDriver wd;
@@ -49,20 +47,15 @@ public class NewAddressBookCreationTests {
 
   @Test
   public void testNewAddressBook() throws Exception {
-<<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/tests/NewAddressBookCreationTests.java
-    openAddressBook();
-    addNewAddressBook();
     userFirstName("Eлена");
     new FillForm().invoke(new GroupDatan("Y/Y", "Yelina", "Lina", "TCWD", "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333", "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL", "Minsk", "+5555555555", "Notes"));
-    submitNewAddressBook();
+
 
   }
 
   private void userFirstName(String userfirstname) {
-=======
     wd.get("http://localhost/addressbook/group.php");
     wd.findElement(By.linkText("add new")).click();
->>>>>>> parent of 7cb18ea... Задание №4: Сделать тесты для создания групп и контактов в адресной книге+ рефакторинг:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys("Eлена");
@@ -129,7 +122,6 @@ public class NewAddressBookCreationTests {
   public void tearDown() {
     wd.quit();
   }
-<<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/tests/NewAddressBookCreationTests.java
 
   private class FillForm {
     public void invoke(GroupDatan groupDatan) {
@@ -183,6 +175,4 @@ public class NewAddressBookCreationTests {
       wd.findElement(By.name("notes")).sendKeys(groupDatan.getUserNotes());
     }
   }
-=======
->>>>>>> parent of 7cb18ea... Задание №4: Сделать тесты для создания групп и контактов в адресной книге+ рефакторинг:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
 }
