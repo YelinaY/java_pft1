@@ -2,9 +2,12 @@ package ru.stqa.pft1.addressbook1.model;
 
 public class GroupDatan {
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 >>>>>>> parent of 1280cbb... Задание 5. трансформацию тестов и для групп, и для контактов:
+=======
+>>>>>>> parent of cbc2d42... Revert "Revert "Задание №5: Реализовать двухуровневую архитектуру тестового набора""
   private final String usermiddlename;
   private final String userlastname;
   private final String usernickname;
