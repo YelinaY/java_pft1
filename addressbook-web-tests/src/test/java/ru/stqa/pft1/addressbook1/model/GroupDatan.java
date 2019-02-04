@@ -1,6 +1,7 @@
 package ru.stqa.pft1.addressbook1.model;
 
 public class GroupDatan {
+  
   private final String usermiddlename;
   private final String userlastname;
   private final String usernickname;
