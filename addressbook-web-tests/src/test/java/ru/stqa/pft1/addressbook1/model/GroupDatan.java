@@ -1,7 +1,10 @@
 package ru.stqa.pft1.addressbook1.model;
 
 public class GroupDatan {
+<<<<<<< HEAD
   
+=======
+>>>>>>> parent of 1280cbb... Задание 5. трансформацию тестов и для групп, и для контактов:
   private final String usermiddlename;
   private final String userlastname;
   private final String usernickname;

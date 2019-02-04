@@ -14,12 +14,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 <<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/tests/NewAddressBookCreationTests.java
 import ru.stqa.pft1.addressbook1.model.GroupDatan;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 526e766... Задание №5: Реализовать двухуровневую архитектуру тестового набора
 import org.openqa.selenium.support.ui.Select;
 >>>>>>> parent of 7cb18ea... Задание №4: Сделать тесты для создания групп и контактов в адресной книге+ рефакторинг:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
 
+=======
+=======
+import org.openqa.selenium.support.ui.Select;
+>>>>>>> parent of 7cb18ea... Задание №4: Сделать тесты для создания групп и контактов в адресной книге+ рефакторинг:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
+>>>>>>> parent of 1280cbb... Задание 5. трансформацию тестов и для групп, и для контактов:
 
 public class NewAddressBookCreationTests {
   FirefoxDriver wd;
@@ -60,14 +66,31 @@ public class NewAddressBookCreationTests {
     openAddressBook();
     addNewAddressBook();
     userFirstName("Eлена");
+<<<<<<< HEAD
     new FillForm().invoke(new GroupDatan("Y/Y", "Yelina", "Lina", "TCWD", "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333", "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL", "Minsk", "+5555555555", "Notes"));
     submitNewAddressBook();
+=======
+<<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/tests/NewAddressBookCreationTests.java
+    new FillForm().invoke(new GroupDatan("Y/Y", "Yelina", "Lina", "TCWD", "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333", "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL", "Minsk", "+5555555555", "Notes"));
+<<<<<<< HEAD
+
+=======
+    new FillForm().invoke("Y/Y", "Yelina", "Lina", "TCWD", "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333", "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL", "Minsk", "+5555555555", "Notes");
+    submitNewAddressBook();
+>>>>>>> parent of 6ddcc8f... 4 задание - рефакторинг Parametr Object:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
+=======
+    submitNewAddressBook();
+>>>>>>> parent of 526e766... Задание №5: Реализовать двухуровневую архитектуру тестового набора
+>>>>>>> parent of 1280cbb... Задание 5. трансформацию тестов и для групп, и для контактов:
 
   }
 
   private void userFirstName(String userfirstname) {
 =======
+<<<<<<< HEAD
 >>>>>>> parent of 526e766... Задание №5: Реализовать двухуровневую архитектуру тестового набора
+=======
+>>>>>>> parent of 1280cbb... Задание 5. трансформацию тестов и для групп, и для контактов:
     wd.get("http://localhost/addressbook/group.php");
     wd.findElement(By.linkText("add new")).click();
 >>>>>>> parent of 7cb18ea... Задание №4: Сделать тесты для создания групп и контактов в адресной книге+ рефакторинг:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
@@ -138,6 +161,7 @@ public class NewAddressBookCreationTests {
     wd.quit();
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/tests/NewAddressBookCreationTests.java
 
@@ -191,9 +215,66 @@ public class NewAddressBookCreationTests {
       wd.findElement(By.name("notes")).click();
       wd.findElement(By.name("notes")).clear();
       wd.findElement(By.name("notes")).sendKeys(groupDatan.getUserNotes());
+=======
+<<<<<<< HEAD:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/tests/NewAddressBookCreationTests.java
+
+  private class FillForm {
+    public void invoke(String usermiddlename, String userlastname, String usernickname, String userCompany, String userAddress, String userHome, String userMobile, String userWorkingPhone, String userFax, String userMail, String userMail2, String userMail3, String userHomepage, String userAddress2, String userPhone2, String userNotes) {
+      wd.findElement(By.name("middlename")).click();
+      wd.findElement(By.name("middlename")).clear();
+      wd.findElement(By.name("middlename")).sendKeys(usermiddlename);
+      wd.findElement(By.name("lastname")).click();
+      wd.findElement(By.name("lastname")).clear();
+      wd.findElement(By.name("lastname")).sendKeys(userlastname);
+      wd.findElement(By.name("nickname")).click();
+      wd.findElement(By.name("nickname")).clear();
+      wd.findElement(By.name("nickname")).sendKeys(usernickname);
+      wd.findElement(By.name("company")).click();
+      wd.findElement(By.name("company")).clear();
+      wd.findElement(By.name("company")).sendKeys(userCompany);
+      wd.findElement(By.name("address")).click();
+      wd.findElement(By.name("address")).clear();
+      wd.findElement(By.name("address")).sendKeys(userAddress);
+      wd.findElement(By.name("home")).click();
+      wd.findElement(By.name("home")).clear();
+      wd.findElement(By.name("home")).sendKeys(userHome);
+      wd.findElement(By.name("mobile")).click();
+      wd.findElement(By.name("mobile")).clear();
+      wd.findElement(By.name("mobile")).sendKeys(userMobile);
+      wd.findElement(By.name("work")).click();
+      wd.findElement(By.name("work")).clear();
+      wd.findElement(By.name("work")).sendKeys(userWorkingPhone);
+      wd.findElement(By.name("fax")).click();
+      wd.findElement(By.name("fax")).clear();
+      wd.findElement(By.name("fax")).sendKeys(userFax);
+      wd.findElement(By.name("email")).click();
+      wd.findElement(By.name("email")).clear();
+      wd.findElement(By.name("email")).sendKeys(userMail);
+      wd.findElement(By.name("email2")).click();
+      wd.findElement(By.name("email2")).clear();
+      wd.findElement(By.name("email2")).sendKeys(userMail2);
+      wd.findElement(By.name("email3")).click();
+      wd.findElement(By.name("email3")).clear();
+      wd.findElement(By.name("email3")).sendKeys(userMail3);
+      wd.findElement(By.name("homepage")).click();
+      wd.findElement(By.name("homepage")).clear();
+      wd.findElement(By.name("homepage")).sendKeys(userHomepage);
+      wd.findElement(By.name("address2")).click();
+      wd.findElement(By.name("address2")).clear();
+      wd.findElement(By.name("address2")).sendKeys(userAddress2);
+      wd.findElement(By.name("phone2")).click();
+      wd.findElement(By.name("phone2")).clear();
+      wd.findElement(By.name("phone2")).sendKeys(userPhone2);
+      wd.findElement(By.name("notes")).click();
+      wd.findElement(By.name("notes")).clear();
+      wd.findElement(By.name("notes")).sendKeys(userNotes);
+>>>>>>> parent of 1280cbb... Задание 5. трансформацию тестов и для групп, и для контактов:
     }
   }
 =======
 >>>>>>> parent of 7cb18ea... Задание №4: Сделать тесты для создания групп и контактов в адресной книге+ рефакторинг:addressbook-web-tests/src/test/java/ru/stqa/pft1/addressbook1/NewAddressBookCreationTests.java
+<<<<<<< HEAD
 >>>>>>> parent of 526e766... Задание №5: Реализовать двухуровневую архитектуру тестового набора
+=======
+>>>>>>> parent of 1280cbb... Задание 5. трансформацию тестов и для групп, и для контактов:
 }
