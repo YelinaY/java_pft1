@@ -10,6 +10,6 @@ public class GroupDeletionTests extends TestBase {
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().deleteSelectedGrpoup();
     app.getGroupHelper().returnToGroupPage();
-    }
+  }
 
 }
