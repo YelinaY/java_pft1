@@ -25,56 +25,25 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void fillAddressBookForm (ContactData contactData){
-   type(By.name("firstname"), contactData.getUserfirstname());
-   type(By.name("middlename"), contactData.getUsermiddlename());
-  type(By.name("lastname"), contactData.getUserlastname());
-   type(By.name("nickname"), contactData.getUsernickname());
-   type(By.name("company"), contactData.getUsercompany());
-   /*
-   wd.findElement(By.name("address")).click();
-    wd.findElement(By.name("address")).clear();
-    wd.findElement(By.name("address")).sendKeys(useraddress);
-    wd.findElement(By.name("home")).click();
-    wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys(userhomephone);
-    wd.findElement(By.name("mobile")).click();
-    wd.findElement(By.name("mobile")).clear();
-    wd.findElement(By.name("mobile")).sendKeys(usermobilephone);
-    wd.findElement(By.name("work")).click();
-    wd.findElement(By.name("work")).clear();
-    wd.findElement(By.name("work")).sendKeys(userworkphone);
-    wd.findElement(By.name("fax")).click();
-    wd.findElement(By.name("fax")).clear();
-    wd.findElement(By.name("fax")).sendKeys(userfax);
-    wd.findElement(By.name("email")).click();
-    wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(useremail);
-    wd.findElement(By.name("email2")).click();
-    wd.findElement(By.name("email2")).clear();
-    wd.findElement(By.name("email2")).sendKeys(useremail2);
-    wd.findElement(By.name("email3")).click();
-    wd.findElement(By.name("email3")).click();
-    wd.findElement(By.name("email3")).clear();
-    wd.findElement(By.name("email3")).sendKeys(useremail3);
-    wd.findElement(By.name("homepage")).click();
-    wd.findElement(By.name("homepage")).clear();
-    wd.findElement(By.name("homepage")).sendKeys(userhomepage);
-    wd.findElement(By.name("address2")).click();
-    wd.findElement(By.name("address2")).clear();
-    wd.findElement(By.name("address2")).sendKeys(useraddress2);
-    wd.findElement(By.name("phone2")).click();
-    wd.findElement(By.name("phone2")).clear();
-    wd.findElement(By.name("phone2")).sendKeys(userphone2);
-    wd.findElement(By.name("notes")).click();
-    wd.findElement(By.name("notes")).clear();
-    wd.findElement(By.name("notes")).sendKeys(usernotes);
-*/
-
-
-
+  public void fillAddressBookForm(ContactData contactData) {
+    type(By.name("firstname"), contactData.getUserfirstname());
+    type(By.name("middlename"), contactData.getUsermiddlename());
+    type(By.name("lastname"), contactData.getUserlastname());
+    type(By.name("nickname"), contactData.getUsernickname());
+    type(By.name("company"), contactData.getUsercompany());
+    type(By.name("address"), contactData.getUseraddress());
+    type(By.name("home"), contactData.getUserhomephone());
+    type(By.name("mobile"), contactData.getUsermobilephone());
+    type(By.name("work"), contactData.getUserworkphone());
+    type(By.name("fax"), contactData.getUserfax());
+    type(By.name("email"), contactData.getUseremail());
+    type(By.name("email2"), contactData.getUseremail2());
+    type(By.name("email3"), contactData.getUseremail3());
+    type(By.name("homepage"), contactData.getUserhomepage());
+    type(By.name("address2"), contactData.getUseraddress2());
+    type(By.name("phone2"), contactData.getUserphone2());
+    type(By.name("notes"), contactData.getUsernotes());
   }
-
 
 
   public void initGroupCreation() {
@@ -95,5 +64,17 @@ public class GroupHelper extends HelperBase {
 
   public void submitGroupModification() {
     click(By.name("update"));
+  }
+
+  public void selectAddressBook() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedAddressBook() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void confirmDeletion() {
+    wd.switchTo().alert().accept();
   }
 }

@@ -18,11 +18,23 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
- /*public void fillAddressBookForm(ContactData contactData) {
+  /*public void fillAddressBookForm(ContactData contactData) {
 
-      }
-*/
+       }
+ */
   public void submitNewAddressBook() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
+
+  public void gotoHomePage() {
+    click(By.linkText("home"));
   }
+
+  public void editAddrassBook() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void updateAddressBook() {
+    click(By.xpath("(//input[@name='update'])[2]"));
+  }
+}
