@@ -31,7 +31,7 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void editAddrassBook() {
-    click(By.xpath("//img[@alt='Edit']"));
+    click(By.cssSelector("img[alt=\"Edit\"]"));
   }
 
   public void updateAddressBook() {
