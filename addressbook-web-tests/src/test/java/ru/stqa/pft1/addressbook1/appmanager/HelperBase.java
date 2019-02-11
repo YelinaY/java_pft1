@@ -18,10 +18,19 @@ public class HelperBase {
 
   protected void type(By locator, String text) {
     click(locator);
+    /*если вводимые данные - "0" -(null)
+        if (text == null) {
+    }else {
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
+    }
+    }
+    */
+    if (text != null) {
+      wd.findElement(locator).clear();
+      wd.findElement(locator).sendKeys(text);
+    }
   }
-
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
