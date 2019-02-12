@@ -26,7 +26,14 @@ public class HelperBase {
     }
     }
     */
+    //значение по умолчанию null
     if (text != null) {
+      //проверить если вводимое значение совпадает с ранее вводимым значением -
+      String existingText = wd.findElement(locator).getAttribute("value");
+      //get.Attribute - для полей ввода, get.Text - возвращает пустую строчку
+      if (!text.equals(existingText)) {
+        //если текст не  совпадает с существующим текстом ввода: ввели вначале ""ASD"  а затем "ZXC"
+      }
       wd.findElement(locator).clear();
       wd.findElement(locator).sendKeys(text);
     }
