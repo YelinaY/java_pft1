@@ -1,7 +1,9 @@
 package ru.stqa.pft1.addressbook1.appmanager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 public class GroupHelper extends HelperBase {
@@ -37,7 +39,11 @@ public class GroupHelper extends HelperBase {
     type(By.name("address2"), contactData.getUseraddress2());
     type(By.name("phone2"), contactData.getUserphone2());
     type(By.name("notes"), contactData.getUsernotes());
+    if (isElementPresent(By.name("new_group"))) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }
   }
+
   public void initGroupCreation() {
     click(By.name("new"));
   }
