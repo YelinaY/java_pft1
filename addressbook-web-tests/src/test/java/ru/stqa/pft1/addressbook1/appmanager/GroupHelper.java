@@ -1,24 +1,33 @@
 package ru.stqa.pft1.addressbook1.appmanager;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
+
+import java.util.NoSuchElementException;
+
 public class GroupHelper extends HelperBase {
   public GroupHelper(WebDriver wd) {
     super(wd);
   }
+
   public void returnToGroupPage() {
     click(By.linkText("group page"));
   }
+
   public void submitGroupCreation() {
     click(By.name("submit"));
   }
+
   public void fillGroupForm(GroupData groupData) {
     type(By.name("group_name"), groupData.getName());
     type(By.name("group_header"), groupData.getHeader());
     type(By.name("group_footer"), groupData.getFooter());
   }
+
   public void fillAddressBookForm(ContactData contactData) {
     type(By.name("firstname"), contactData.getUserfirstname());
     type(By.name("middlename"), contactData.getUsermiddlename());
@@ -37,28 +46,40 @@ public class GroupHelper extends HelperBase {
     type(By.name("address2"), contactData.getUseraddress2());
     type(By.name("phone2"), contactData.getUserphone2());
     type(By.name("notes"), contactData.getUsernotes());
+   // new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+   if (isElementPresent(By.name("new_group"))) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }
   }
+
   public void initGroupCreation() {
     click(By.name("new"));
   }
+
   public void deleteSelectedGrpoup() {
     click(By.name("delete"));
   }
+
   public void selectGroup() {
     click(By.name("selected[]"));
   }
+
   public void initGroupModification() {
     click(By.name("edit"));
   }
+
   public void submitGroupModification() {
     click(By.name("update"));
   }
+
   public void selectAddressBook() {
     click(By.name("selected[]"));
   }
+
   public void deleteSelectedAddressBook() {
     click(By.xpath("//input[@value='Delete']"));
   }
+
   public void confirmDeletion() {
     wd.switchTo().alert().accept();
   }
