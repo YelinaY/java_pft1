@@ -30,6 +30,9 @@ public class GroupHelper extends HelperBase {
   }
 
   public void fillAddressBookForm(ContactData contactData, boolean creation) {
+    if (!isElementPresent(By.name("firstname"))){
+      return;
+    }
     type(By.name("firstname"), contactData.getUserfirstname());
     type(By.name("middlename"), contactData.getUsermiddlename());
     type(By.name("lastname"), contactData.getUserlastname());
@@ -56,7 +59,7 @@ public class GroupHelper extends HelperBase {
      }
 
   public void initGroupCreation() {
-    click(By.name("new"));
+      click(By.name("new"));
   }
 
   public void deleteSelectedGrpoup() {
