@@ -29,7 +29,18 @@ public class ApplicationManager {
 
 >>>>>>> parent of d29ea2c... Запуск тестов в разных браузерах
   public void init() {
+<<<<<<< HEAD
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+=======
+     if (browser == BrowserType.FIREFOX){
+      wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+    }else if (browser == BrowserType.CHROME){
+      wd = new ChromeDriver();
+    } else if (browser == BrowserType.IE){
+      wd = new InternetExplorerDriver();
+    }
+   // wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+>>>>>>> parent of 2f86ad6... Добавлен класс Equality для сравнения объектов
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
