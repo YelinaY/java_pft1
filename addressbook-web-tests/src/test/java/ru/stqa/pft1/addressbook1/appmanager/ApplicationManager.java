@@ -30,8 +30,11 @@ public class ApplicationManager {
 >>>>>>> parent of d29ea2c... Запуск тестов в разных браузерах
   public void init() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
 =======
+=======
+>>>>>>> parent of 2f86ad6... Добавлен класс Equality для сравнения объектов
      if (browser == BrowserType.FIREFOX){
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     }else if (browser == BrowserType.CHROME){
