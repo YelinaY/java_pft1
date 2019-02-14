@@ -10,8 +10,12 @@ import ru.stqa.pft1.addressbook1.model.GroupData;
 import java.util.NoSuchElementException;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class GroupHelper extends HelperBase {
   public GroupHelper(WebDriver wd) {
+=======
+  public GroupHelper(FirefoxDriver wd) {
+>>>>>>> parent of d29ea2c... Запуск тестов в разных браузерах
 =======
   public GroupHelper(FirefoxDriver wd) {
 >>>>>>> parent of d29ea2c... Запуск тестов в разных браузерах
