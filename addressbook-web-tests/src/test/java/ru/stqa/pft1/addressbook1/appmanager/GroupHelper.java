@@ -1,6 +1,7 @@
 package ru.stqa.pft1.addressbook1.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -9,22 +10,13 @@ import ru.stqa.pft1.addressbook1.model.GroupData;
 
 import java.util.NoSuchElementException;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 public class GroupHelper extends HelperBase {
   public GroupHelper(WebDriver wd) {
-=======
-  public GroupHelper(FirefoxDriver wd) {
->>>>>>> parent of d29ea2c... Запуск тестов в разных браузерах
-=======
-  public GroupHelper(FirefoxDriver wd) {
->>>>>>> parent of d29ea2c... Запуск тестов в разных браузерах
-    super(wd);
-  }
+   super(wd);   }
 
   public void returnToGroupPage() {
-    click(By.linkText("group page"));
-  }
+    click(By.linkText("group page"));  }
 
   public void submitGroupCreation() {
     click(By.name("submit"));
@@ -36,10 +28,7 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void fillAddressBookForm(ContactData contactData, boolean creation) {
-    if (!isElementPresent(By.name("firstname"))){
-      return;
-    }
+  public void fillAddressBookForm(ContactData contactData) {
     type(By.name("firstname"), contactData.getUserfirstname());
     type(By.name("middlename"), contactData.getUsermiddlename());
     type(By.name("lastname"), contactData.getUserlastname());
@@ -57,12 +46,7 @@ public class GroupHelper extends HelperBase {
     type(By.name("address2"), contactData.getUseraddress2());
     type(By.name("phone2"), contactData.getUserphone2());
     type(By.name("notes"), contactData.getUsernotes());
-    if (creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    }else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
-   // new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+
      }
 
   public void initGroupCreation() {

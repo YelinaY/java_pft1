@@ -2,14 +2,15 @@ package ru.stqa.pft1.addressbook1.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.NoSuchElementException;
 
 public class HelperBase {
-  protected FirefoxDriver wd;
+  protected WebDriver wd;
 
-  public HelperBase(FirefoxDriver wd) {
+  public HelperBase(WebDriver wd) {
     this.wd = wd;
   }
 
@@ -19,26 +20,10 @@ public class HelperBase {
 
   protected void type(By locator, String text) {
     click(locator);
-    /*если вводимые данные - "0" -(null)
-        if (text == null) {
-    }else {
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-    }
-    }
-    */
-    //значение по умолчанию null
-    if (text != null) {
-      //проверить если вводимое значение совпадает с ранее вводимым значением -
-      String existingText = wd.findElement(locator).getAttribute("value");
-      //get.Attribute - для полей ввода, get.Text - возвращает пустую строчку
-      if (!text.equals(existingText)) {
-        //если текст не  совпадает с существующим текстом ввода: ввели вначале ""ASD"  а затем "ZXC"
-      }
       wd.findElement(locator).clear();
       wd.findElement(locator).sendKeys(text);
     }
-  }
+
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
