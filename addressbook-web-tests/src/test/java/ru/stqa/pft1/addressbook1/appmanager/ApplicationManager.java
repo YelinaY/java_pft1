@@ -42,8 +42,11 @@ public class ApplicationManager {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
 =======
+=======
+>>>>>>> parent of 2f86ad6... Добавлен класс Equality для сравнения объектов
 =======
 >>>>>>> parent of 2f86ad6... Добавлен класс Equality для сравнения объектов
 =======
