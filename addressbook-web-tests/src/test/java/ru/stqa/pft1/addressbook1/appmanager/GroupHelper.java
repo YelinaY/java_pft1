@@ -2,21 +2,18 @@ package ru.stqa.pft1.addressbook1.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
-
-import java.util.NoSuchElementException;
 
 
 public class GroupHelper extends HelperBase {
   public GroupHelper(WebDriver wd) {
-   super(wd);   }
+    super(wd);
+  }
 
   public void returnToGroupPage() {
-    click(By.linkText("group page"));  }
+    click(By.linkText("group page"));
+  }
 
   public void submitGroupCreation() {
     click(By.name("submit"));
@@ -47,10 +44,10 @@ public class GroupHelper extends HelperBase {
     type(By.name("phone2"), contactData.getUserphone2());
     type(By.name("notes"), contactData.getUsernotes());
 
-     }
+  }
 
   public void initGroupCreation() {
-      click(By.name("new"));
+    click(By.name("new"));
   }
 
   public void deleteSelectedGrpoup() {

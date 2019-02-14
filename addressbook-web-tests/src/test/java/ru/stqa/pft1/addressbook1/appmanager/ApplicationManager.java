@@ -1,4 +1,5 @@
 package ru.stqa.pft1.addressbook1.appmanager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.remote.BrowserType;
 
 
 import java.util.concurrent.TimeUnit;
+
 public class ApplicationManager {
   WebDriver wd;
   private SessionHelper sessionHelper;
@@ -20,15 +22,13 @@ public class ApplicationManager {
   }
 
   public void init() {
-     if (browser == BrowserType.FIREFOX){
+    if (browser == BrowserType.FIREFOX) {
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-    }else if (browser == BrowserType.CHROME){
+    } else if (browser == BrowserType.CHROME) {
       wd = new ChromeDriver();
-    } else if (browser == BrowserType.IE){
+    } else if (browser == BrowserType.IE) {
       wd = new InternetExplorerDriver();
     }
-
-    //wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
 
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
@@ -37,12 +37,15 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
+
   public void stop() {
     wd.quit();
   }
+
   public GroupHelper getGroupHelper() {
     return groupHelper;
   }
+
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
   }
