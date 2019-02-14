@@ -1,7 +1,6 @@
 package ru.stqa.pft1.addressbook1.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -10,8 +9,12 @@ import ru.stqa.pft1.addressbook1.model.GroupData;
 
 import java.util.NoSuchElementException;
 
+<<<<<<< HEAD
 public class GroupHelper extends HelperBase {
   public GroupHelper(WebDriver wd) {
+=======
+  public GroupHelper(FirefoxDriver wd) {
+>>>>>>> parent of d29ea2c... Запуск тестов в разных браузерах
     super(wd);
   }
 

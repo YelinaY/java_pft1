@@ -1,13 +1,12 @@
 package ru.stqa.pft1.addressbook1.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 
 public class NavigationHelper extends HelperBase {
 
-  public NavigationHelper(WebDriver wd) {
+  public NavigationHelper(FirefoxDriver wd) {
     super(wd);
   }
 /* если на странице присутствуют 3 элемента: tag h1 с текстом Groups и элемент с именем "new". Если выполняются эти 3 условия
