@@ -17,11 +17,11 @@ public class ApplicationManager {
     this.browser = browser;
   }
   public void init() {
-     if (browser.equals(BrowserType.FIREFOX)){
+     if (browser == BrowserType.FIREFOX){
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-    }else if (browser.equals(BrowserType.CHROME)){
+    }else if (browser == BrowserType.CHROME){
       wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.IE)){
+    } else if (browser == BrowserType.IE){
       wd = new InternetExplorerDriver();
     }
    // wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
