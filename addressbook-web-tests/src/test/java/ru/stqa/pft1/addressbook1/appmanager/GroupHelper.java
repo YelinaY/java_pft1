@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 
-
 public class GroupHelper extends HelperBase {
   public GroupHelper(WebDriver wd) {
     super(wd);
@@ -45,11 +44,12 @@ public class GroupHelper extends HelperBase {
     type(By.name("notes"), contactData.getUsernotes());
 
   }
-    public void initGroupCreation() {
+
+  public void initGroupCreation() {
     click(By.cssSelector("input[name=\"new\"]"));
-}
- // public void initGroupCreation() {
-   // click(By.name("new")); }
+  }
+  // public void initGroupCreation() {
+  // click(By.name("new")); }
 
   public void deleteSelectedGrpoup() {
     click(By.name("delete"));
@@ -83,7 +83,7 @@ public class GroupHelper extends HelperBase {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
-   returnToGroupPage();
+    returnToGroupPage();
   }
 
   public boolean isThereAGroup() {
