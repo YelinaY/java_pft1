@@ -96,4 +96,7 @@ public class GroupHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
+  public boolean isThereAddressBook() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }

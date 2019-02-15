@@ -7,6 +7,14 @@ public class AddressBookModification extends TestBase {
   @Test
   public void testAddressBookModification() {
     app.getNavigationHelper().gotoHomePage();
+    if (! app.getGroupHelper().isThereAddressBook()){
+      app.getNavigationHelper().initAddressBookCreation();
+      app.getGroupHelper().fillAddressBookForm(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
+              "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
+              "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
+              "Minsk", "+5555555555", "Notes", "Test1"), true);
+      app.getNavigationHelper().submitNewAddressBook();
+    }
     app.getNavigationHelper().editAddrassBook();
     app.getGroupHelper().fillAddressBookForm(new ContactData("Yuliya", null, "Yelina",
             "Lina", "TCWD", "Paris, Royal sq.", "+1111111111", "+222222222",
