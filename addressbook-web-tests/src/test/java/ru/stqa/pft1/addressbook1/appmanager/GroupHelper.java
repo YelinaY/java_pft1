@@ -2,6 +2,8 @@ package ru.stqa.pft1.addressbook1.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 
@@ -24,7 +26,7 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void fillAddressBookForm(ContactData contactData) {
+  public void fillAddressBookForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getUserfirstname());
     type(By.name("middlename"), contactData.getUsermiddlename());
     type(By.name("lastname"), contactData.getUserlastname());
@@ -42,8 +44,12 @@ public class GroupHelper extends HelperBase {
     type(By.name("address2"), contactData.getUseraddress2());
     type(By.name("phone2"), contactData.getUserphone2());
     type(By.name("notes"), contactData.getUsernotes());
-
-  }
+    if (creation){
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
+    }
 
   public void initGroupCreation() {
     click(By.cssSelector("input[name=\"new\"]"));
@@ -89,4 +95,5 @@ public class GroupHelper extends HelperBase {
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
+
 }
