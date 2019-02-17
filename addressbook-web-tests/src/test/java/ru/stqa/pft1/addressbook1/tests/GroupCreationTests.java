@@ -10,11 +10,8 @@ public class GroupCreationTests extends TestBase {
   @Test
   public void testGroupCreaton() {
     // сравнить количество групп до добавления и после
-    app.getNavigationHelper().gotoGroupPage();
-    int before = app.getGroupHelper().getGroupCount();
+    app.getGroupHelper().gotoGroupPage();
     app.getGroupHelper().createGroup(new GroupData("Test1", "Test2", "Test3"));
-    int after = app.getGroupHelper().getGroupCount();
-    Assert.assertEquals(after, before + 1);
 
   }
 

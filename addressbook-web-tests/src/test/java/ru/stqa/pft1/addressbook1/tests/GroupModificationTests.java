@@ -6,7 +6,7 @@ import ru.stqa.pft1.addressbook1.model.GroupData;
 public class GroupModificationTests extends TestBase {
   @Test
   public void testGroupModification() {
-    app.getNavigationHelper().gotoGroupPage();
+    app.getGroupHelper().gotoGroupPage();
     if (! app.getGroupHelper().isThereAGroup()){
       app.getGroupHelper().createGroup(new GroupData("Test1", null, "Test3"));
     }
