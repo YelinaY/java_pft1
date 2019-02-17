@@ -10,9 +10,13 @@ public class AddressBookDeletion extends TestBase {
     app.getNavigationHelper().gotoHomePage();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 86bc4e3... созданы тесты для сравнения количества групп и контактов до и после создания/удаления/модиффикации
+=======
+    int before = app.getGroupHelper().getAddressCount();
+>>>>>>> parent of 88ea6fe... Добавлены методы выбора контакта из списка для удаления
 =======
     int before = app.getGroupHelper().getAddressCount();
 >>>>>>> parent of 88ea6fe... Добавлены методы выбора контакта из списка для удаления
@@ -26,12 +30,16 @@ public class AddressBookDeletion extends TestBase {
 <<<<<<< HEAD
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     int before = app.getGroupHelper().getAddressCount();
     app.getGroupHelper().selectAddressBook(before -1); // удалить последнюю группу
 =======
     }
     app.getGroupHelper().selectAddressBook();
 >>>>>>> parent of 86bc4e3... созданы тесты для сравнения количества групп и контактов до и после создания/удаления/модиффикации
+=======
+    app.getGroupHelper().selectAddressBook();
+>>>>>>> parent of 88ea6fe... Добавлены методы выбора контакта из списка для удаления
 =======
     app.getGroupHelper().selectAddressBook();
 >>>>>>> parent of 88ea6fe... Добавлены методы выбора контакта из списка для удаления

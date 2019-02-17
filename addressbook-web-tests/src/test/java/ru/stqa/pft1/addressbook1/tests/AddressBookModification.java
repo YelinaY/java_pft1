@@ -25,10 +25,14 @@ public class AddressBookModification extends TestBase {
     app.getNavigationHelper().gotoHomePage();
     int after = app.getGroupHelper().getAddressCount();
 <<<<<<< HEAD
+<<<<<<< HEAD
     Assert.assertEquals(after, before);
 =======
 
 >>>>>>> parent of 86bc4e3... созданы тесты для сравнения количества групп и контактов до и после создания/удаления/модиффикации
+=======
+    Assert.assertEquals(after, before); // ошибка выдается если мы
+>>>>>>> parent of 88ea6fe... Добавлены методы выбора контакта из списка для удаления
 =======
     Assert.assertEquals(after, before); // ошибка выдается если мы
 >>>>>>> parent of 88ea6fe... Добавлены методы выбора контакта из списка для удаления
