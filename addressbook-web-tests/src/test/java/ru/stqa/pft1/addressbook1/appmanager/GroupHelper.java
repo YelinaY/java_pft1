@@ -99,4 +99,8 @@ public class GroupHelper extends HelperBase {
   public boolean isThereAddressBook() {
     return isElementPresent(By.name("selected[]"));
   }
+
+  public int getGroupCount() {
+    return wd.findElements(By.name("selected[]")).size(); // возвращает количество элементов
+     }
 }

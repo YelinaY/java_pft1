@@ -22,7 +22,7 @@ public class Primes {
     }
     return true;
   }
-}
+
 /*
   public static int isPrimeWhiled() {
     for (int i = 0; i <= 10; i++) {
@@ -36,4 +36,14 @@ public class Primes {
     }
   }
 */
+public static boolean isPrime(long n) {
+  for (long i = 2; i < n; i = i + 1) {
+    if (n % i == 0) {  //деление без остатка 1, 2, 3, 4...
+      return false;
+    }
+  }
+  return true;
+}
+
+}
 
