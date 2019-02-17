@@ -9,7 +9,7 @@ public class AddressBookDeletion extends TestBase {
   @Test
   public void testGroupDeletion() {
     app.getNavigationHelper().gotoHomePage();
-    int before = app.getGroupHelper().getAddressCount();
+
     if (! app.getGroupHelper().isThereAddressBook()){
       app.getNavigationHelper().initAddressBookCreation();
       app.getGroupHelper().fillAddressBookForm(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
@@ -18,7 +18,8 @@ public class AddressBookDeletion extends TestBase {
               "Minsk", "+5555555555", "Notes", "Test1"), true);
       app.getNavigationHelper().submitNewAddressBook();
       }
-    app.getGroupHelper().selectAddressBook();
+    int before = app.getGroupHelper().getAddressCount();
+    app.getGroupHelper().selectAddressBook(before -1); // удалить последнюю группу
     app.getGroupHelper().deleteSelectedAddressBook();
     app.getGroupHelper().confirmDeletion();
     int after = app.getGroupHelper().getAddressCount();

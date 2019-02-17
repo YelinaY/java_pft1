@@ -26,7 +26,7 @@ public class AddressBookModification extends TestBase {
     app.getNavigationHelper().updateAddressBook();
     app.getNavigationHelper().gotoHomePage();
     int after = app.getGroupHelper().getAddressCount();
-    Assert.assertEquals(after, before); // ошибка выдается если мы
+    Assert.assertEquals(after, before);
   }
 }
 
