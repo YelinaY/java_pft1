@@ -73,8 +73,8 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void selectAddressBook(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectAddressBook() {
+    click(By.name("selected[]"));
   }
 
   public void deleteSelectedAddressBook() {
