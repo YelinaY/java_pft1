@@ -46,10 +46,11 @@ public class GroupContactHelper extends HelperBase {
     type(By.name("notes"), contactData.getUsernotes());
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else{
+    } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
+
   public void initGroupCreation() {
     click(By.cssSelector("input[name=\"new\"]"));
   }
@@ -93,12 +94,14 @@ public class GroupContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public boolean isThereAddressBook() {return isElementPresent(By.name("selected[]"));
-    }
+  public boolean isThereAddressBook() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
   public void gotoGroupPage() {
     if (isElementPresent(By.tagName("h1"))
-      && wd.findElement(By.tagName("h1")).getText().equals("Groups")
-       && isElementPresent(By.name("new"))){
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("new"))) {
       return;
     }
     click(By.linkText("groups"));
@@ -113,7 +116,7 @@ public class GroupContactHelper extends HelperBase {
   }
 
   public void gotoHomePage() {
-    if(isElementPresent(By.id("maintable"))){
+    if (isElementPresent(By.id("maintable"))) {
       return;
     }
     click(By.linkText("home"));
@@ -127,13 +130,24 @@ public class GroupContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
+
+  public int getGroupCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
+
   public void createContact(ContactData contactData, boolean b) {
     gotoHomePage();
     initAddressBookCreation();
-   fillAddressBookForm(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
-           "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
-           "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
-           "Minsk", "+5555555555", "Notes", "Test1"),true);
+    fillAddressBookForm(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
+            "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
+            "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
+            "Minsk", "+5555555555", "Notes", "Test1"), true);
     submitNewAddressBook();
   }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
+
