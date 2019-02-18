@@ -53,8 +53,6 @@ public class GroupContactHelper extends HelperBase {
   public void initGroupCreation() {
     click(By.cssSelector("input[name=\"new\"]"));
   }
-  // public void initGroupCreation() {
-  // click(By.name("new")); }
 
   public void deleteSelectedGrpoup() {
     click(By.name("delete"));
