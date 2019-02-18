@@ -7,8 +7,8 @@ import org.testng.Assert;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 
-public class GroupHelper extends HelperBase {
-  public GroupHelper(WebDriver wd) {
+public class GroupContactHelper extends HelperBase {
+  public GroupContactHelper(WebDriver wd) {
     super(wd);
   }
 
