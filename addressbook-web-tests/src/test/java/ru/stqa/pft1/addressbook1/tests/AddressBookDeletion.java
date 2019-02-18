@@ -21,7 +21,7 @@ public class AddressBookDeletion extends TestBase {
       }
     app.getGroupContactHelper().gotoHomePage();
     int before = app.getGroupContactHelper().getContactCount();
-      app.getGroupContactHelper().selectAddressBook();
+      app.getGroupContactHelper().selectAddressBook((before -1));
      app.getGroupContactHelper().deleteSelectedAddressBook();
     app.getGroupContactHelper().confirmDeletion();
     int after = app.getGroupContactHelper().getContactCount();

@@ -14,7 +14,7 @@ public class GroupDeletionTests extends TestBase {
     }
     app.getGroupContactHelper().gotoGroupPage();
     int before = app.getGroupContactHelper().getGroupCount();
-    app.getGroupContactHelper().selectGroup();
+    app.getGroupContactHelper().selectGroup(0);// выбор первой группы из списка
     app.getGroupContactHelper().deleteSelectedGrpoup();
     app.getGroupContactHelper().returnToGroupPage();
     int after  = app.getGroupContactHelper().getGroupCount();
