@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 
+import java.util.List;
+
 public class GroupDeletionTests extends TestBase {
 
   @Test
@@ -13,11 +15,14 @@ public class GroupDeletionTests extends TestBase {
       app.getGroupContactHelper().createGroup(new GroupData("Test1", null, "Test3"));
     }
     app.getGroupContactHelper().gotoGroupPage();
-    int before = app.getGroupContactHelper().getGroupCount();
+    List<GroupData> before = app.getGroupContactHelper().getGroupList();
+    //int before = app.getGroupContactHelper().getGroupCount();
     app.getGroupContactHelper().selectGroup(0); //выбрать первую группу
     app.getGroupContactHelper().deleteSelectedGrpoup();
     app.getGroupContactHelper().returnToGroupPage();
-    int after  = app.getGroupContactHelper().getGroupCount();
-    Assert.assertEquals(after, before -1);
+    List<GroupData> after = app.getGroupContactHelper().getGroupList();
+    Assert.assertEquals(after.size(), before.size() -1);
+    //int after  = app.getGroupContactHelper().getGroupCount();
+    //Assert.assertEquals(after, before -1); // сравнение количества групп до и после удаления
   }
 }

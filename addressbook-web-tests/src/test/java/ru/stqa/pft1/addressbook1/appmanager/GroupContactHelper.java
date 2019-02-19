@@ -2,10 +2,14 @@ package ru.stqa.pft1.addressbook1.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupContactHelper extends HelperBase {
   public GroupContactHelper(WebDriver wd) {
@@ -149,5 +153,17 @@ public class GroupContactHelper extends HelperBase {
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
-}
+
+  public List<GroupData> getGroupList() {  // метод создает коллекцию элементов
+    List<GroupData> groups = new ArrayList<GroupData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      GroupData group = new GroupData(name, null, null);
+      groups.add(group);
+    }
+    return groups;
+  }
+ }
+
 
