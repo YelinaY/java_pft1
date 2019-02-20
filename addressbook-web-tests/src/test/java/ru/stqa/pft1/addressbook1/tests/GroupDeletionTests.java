@@ -17,12 +17,15 @@ public class GroupDeletionTests extends TestBase {
     app.getGroupContactHelper().gotoGroupPage();
     List<GroupData> before = app.getGroupContactHelper().getGroupList();
     //int before = app.getGroupContactHelper().getGroupCount();
-    app.getGroupContactHelper().selectGroup(0); //выбрать первую группу
+    app.getGroupContactHelper().selectGroup(before.size() - 1);
     app.getGroupContactHelper().deleteSelectedGrpoup();
     app.getGroupContactHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupContactHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() -1);
     //int after  = app.getGroupContactHelper().getGroupCount();
     //Assert.assertEquals(after, before -1); // сравнение количества групп до и после удаления
+
+    //before.remove(before.size()-1); //  удаляю лишний элемент
+    //Assert.assertEquals(before, after);
+    }
   }
-}

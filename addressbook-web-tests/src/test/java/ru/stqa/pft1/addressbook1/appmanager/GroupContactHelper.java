@@ -75,8 +75,7 @@ public class GroupContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void selectAddressBook(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectAddressBook(int index)  { wd.findElements((By.name("selected[]"))).get(index).click();
   }
 
   public void deleteSelectedAddressBook() {
@@ -164,6 +163,18 @@ public class GroupContactHelper extends HelperBase {
     }
     return groups;
   }
- }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
+      for (WebElement element : elements) {
+      String lastname = element.getText();
+      ContactData contact = new ContactData(null, null, lastname, null, null, null, null, null, null, null, null, null, null, null,
+              null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
+}
 
 

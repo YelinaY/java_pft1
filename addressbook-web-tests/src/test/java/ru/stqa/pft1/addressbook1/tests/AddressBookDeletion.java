@@ -4,6 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class AddressBookDeletion extends TestBase {
 
 /*if (! app.getGroupContactHelper().isThereAGroup()){
@@ -20,11 +23,18 @@ public class AddressBookDeletion extends TestBase {
               "Minsk", "+5555555555", "Notes", null),true);
       }
     app.getGroupContactHelper().gotoHomePage();
-    int before = app.getGroupContactHelper().getContactCount();
-      app.getGroupContactHelper().selectAddressBook(0); // удаление первого контакта в списке
+    List<ContactData> before = app.getGroupContactHelper().getContactList();
+   // int before = app.getGroupContactHelper().getContactCount();
+
+    app.getGroupContactHelper().selectAddressBook(before.size()-2);
+   // app.getGroupContactHelper().selectAddressBook(before -1); // удаление первого контакта в списке
      app.getGroupContactHelper().deleteSelectedAddressBook();
     app.getGroupContactHelper().confirmDeletion();
-    int after = app.getGroupContactHelper().getContactCount();
-    Assert.assertEquals(after, before -1); //сравнение количества контактов до и после удаления
+    List<ContactData> after = app.getGroupContactHelper().getContactList();
+  Assert.assertEquals(after.size(), before.size() - 1);
+    //int after = app.getGroupContactHelper().getContactCount();
+   //Assert.assertEquals(after, before -1); //сравнение количества контактов до и после удаления
+   // before.remove(before.size()-1); //  удаляю лишний элемент
+    //Assert.assertEquals(before, after);
   }
 }
