@@ -14,7 +14,7 @@ public class GroupCreationTests extends TestBase {
     // сравнить количество групп до добавления и после
     app.getGroupContactHelper().gotoGroupPage();
     List<GroupData> before = app.getGroupContactHelper().getGroupList();// создавать метод для создания списка (коллекцию)
-    //а затем брать данные из этой коллекции
+    //а затем брать данные из этой коллекции. Переменная before будет содержать список (коллекцию) элементов - объектов типа GroupData
    // int before = app.getGroupContactHelper().getGroupCount();
     app.getGroupContactHelper().createGroup(new GroupData("Test1", "Test2", "Test3"));
     List<GroupData> after = app.getGroupContactHelper().getGroupList();
