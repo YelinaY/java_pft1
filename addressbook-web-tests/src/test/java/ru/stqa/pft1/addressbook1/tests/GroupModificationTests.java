@@ -29,6 +29,7 @@ public class GroupModificationTests extends TestBase {
    // Assert.assertEquals(after, before); // сравнение количества групп до и после модификации
     before.remove(before.size() -1);
     before.add(group);
+
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); //сравниваем списки
 
 
