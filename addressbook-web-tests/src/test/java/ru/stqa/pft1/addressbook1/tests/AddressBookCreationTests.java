@@ -21,6 +21,9 @@ public class AddressBookCreationTests extends TestBase {
   List<ContactData> after = app.getGroupContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() +1);
 
+    after.remove(after.size()-1); //удаляем лишний элемент перед сравнением списков
+    Assert.assertEquals(before,after); //сравниваем списки
+
     //  Assert.assertEquals(after.size(), before.size() +1);
     //int after = app.getGroupContactHelper().getContactCount();
     //Assert.assertEquals(after, before +1); //сравнение количества контактов до и после создания

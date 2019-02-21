@@ -36,5 +36,8 @@ public class AddressBookDeletion extends TestBase {
    //Assert.assertEquals(after, before -1); //сравнение количества контактов до и после удаления
    // before.remove(before.size()-1); //  удаляю лишний элемент
     //Assert.assertEquals(before, after);
+    before.remove(before.size()-1);//удаляем лишний элемент перед сравнением списков
+    Assert.assertEquals(before,after); //сравниваем списки
+
   }
 }

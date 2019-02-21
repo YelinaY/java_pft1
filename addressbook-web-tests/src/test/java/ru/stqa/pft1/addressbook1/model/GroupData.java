@@ -33,7 +33,7 @@ public class GroupData {
   }
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(Object o) { // сравнение объектов по атрибутам объектов
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
@@ -45,4 +45,6 @@ public class GroupData {
 
     return Objects.hash(name);
   }
+
+
 }

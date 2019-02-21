@@ -29,6 +29,7 @@ public class AddressBookModification extends TestBase {
     Assert.assertEquals(after.size(), before.size());
    // int after = app.getGroupContactHelper().getContactCount();
    // Assert.assertEquals(after, before); //сравнение количества контактов до и после модиффикации
+    Assert.assertEquals(before,after); //сравниваем списки
   }
 }
 

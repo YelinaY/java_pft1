@@ -21,7 +21,11 @@ public class GroupDeletionTests extends TestBase {
     app.getGroupContactHelper().deleteSelectedGrpoup();
     app.getGroupContactHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupContactHelper().getGroupList();
-    Assert.assertEquals(after.size(), before.size() -1);
+    Assert.assertEquals(after.size(), before.size() -1); // старый список содержит на 1 объект меньше
+
+    before.remove(before.size()-1);//удаляем лишний элемент перед сравнением списков
+    Assert.assertEquals(before,after); //сравниваем списки
+
     //int after  = app.getGroupContactHelper().getGroupCount();
     //Assert.assertEquals(after, before -1); // сравнение количества групп до и после удаления
 

@@ -25,5 +25,8 @@ public class GroupModificationTests extends TestBase {
     Assert.assertEquals(after.size(), before.size() );
    // int after  = app.getGroupContactHelper().getGroupCount();
    // Assert.assertEquals(after, before); // сравнение количества групп до и после модификации
+    Assert.assertEquals(before,after); //сравниваем списки
+
+
   }
 }

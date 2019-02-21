@@ -21,5 +21,8 @@ public class GroupCreationTests extends TestBase {
     Assert.assertEquals(after.size(), before.size() +1);
     //int after  = app.getGroupContactHelper().getGroupCount();
     //Assert.assertEquals(after, before +1); //сравнение количества групп до и после создания
+    after.remove(after.size()-1); //удаляем лишний элемент перед сравнением списков
+    Assert.assertEquals(before,after); //сравниваем списки
+
   }
 }
