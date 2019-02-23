@@ -49,61 +49,6 @@ public class ContactData {
     this.group = group;
   }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "userfirstname='" + userfirstname + '\'' +
-            ", usermiddlename='" + usermiddlename + '\'' +
-            ", userlastname='" + userlastname + '\'' +
-            ", usernickname='" + usernickname + '\'' +
-            ", usercompany='" + usercompany + '\'' +
-            ", useraddress='" + useraddress + '\'' +
-            ", userhomephone='" + userhomephone + '\'' +
-            ", usermobilephone='" + usermobilephone + '\'' +
-            ", userworkphone='" + userworkphone + '\'' +
-            ", userfax='" + userfax + '\'' +
-            ", useremail='" + useremail + '\'' +
-            ", useremail2='" + useremail2 + '\'' +
-            ", useremail3='" + useremail3 + '\'' +
-            ", userhomepage='" + userhomepage + '\'' +
-            ", useraddress2='" + useraddress2 + '\'' +
-            ", userphone2='" + userphone2 + '\'' +
-            ", usernotes='" + usernotes + '\'' +
-            ", group='" + group + '\'' +
-            '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(userfirstname, that.userfirstname) &&
-            Objects.equals(usermiddlename, that.usermiddlename) &&
-            Objects.equals(userlastname, that.userlastname) &&
-            Objects.equals(usernickname, that.usernickname) &&
-            Objects.equals(usercompany, that.usercompany) &&
-            Objects.equals(useraddress, that.useraddress) &&
-            Objects.equals(userhomephone, that.userhomephone) &&
-            Objects.equals(usermobilephone, that.usermobilephone) &&
-            Objects.equals(userworkphone, that.userworkphone) &&
-            Objects.equals(userfax, that.userfax) &&
-            Objects.equals(useremail, that.useremail) &&
-            Objects.equals(useremail2, that.useremail2) &&
-            Objects.equals(useremail3, that.useremail3) &&
-            Objects.equals(userhomepage, that.userhomepage) &&
-            Objects.equals(useraddress2, that.useraddress2) &&
-            Objects.equals(userphone2, that.userphone2) &&
-            Objects.equals(usernotes, that.usernotes) &&
-            Objects.equals(group, that.group);
-  }
-
-  @Override
-  public int hashCode() {
-
-    return Objects.hash(userfirstname, usermiddlename, userlastname, usernickname, usercompany, useraddress, userhomephone, usermobilephone, userworkphone, userfax, useremail, useremail2, useremail3, userhomepage, useraddress2, userphone2, usernotes, group);
-  }
-
   public String getUserfirstname() {
     return userfirstname;
   }
@@ -174,6 +119,27 @@ public class ContactData {
 
 
   public String getGroup() { return group;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            ", userlastname='" + userlastname + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(userlastname, that.userlastname);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(userlastname);
   }
 }
 
