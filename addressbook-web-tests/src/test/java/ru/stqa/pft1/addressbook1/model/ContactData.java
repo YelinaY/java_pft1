@@ -20,14 +20,13 @@ public class ContactData {
   private final String useraddress2;
   private final String userphone2;
   private final String usernotes;
-  private String group;
 
 
   public ContactData(String userfirstname, String usermiddlename,
                      String userlastname, String usernickname, String usercompany, String useraddress,
                      String userhomephone, String usermobilephone, String userworkphone, String userfax, String useremail,
                      String useremail2, String useremail3, String userhomepage, String useraddress2, String userphone2,
-                     String usernotes, String group) {
+                     String usernotes) {
     this.userfirstname = userfirstname;
     this.usermiddlename = usermiddlename;
     this.userlastname = userlastname;
@@ -45,8 +44,6 @@ public class ContactData {
     this.useraddress2 = useraddress2;
     this.userphone2 = userphone2;
     this.usernotes = usernotes;
-
-    this.group = group;
   }
 
   public String getUserfirstname() {
@@ -118,8 +115,6 @@ public class ContactData {
   }
 
 
-  public String getGroup() { return group;
-  }
 
   @Override
   public String toString() {
