@@ -21,17 +21,19 @@ public class AddressBookModification extends TestBase {
     List<ContactData> before = app.getGroupContactHelper().getContactList();
     //int before = app.getGroupContactHelper().getContactCount();
       app.getGroupContactHelper().editAddressBook();
-    app.getGroupContactHelper().fillAddressBookForm(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
-            "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
-            "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
-            "Minsk", "+5555555555", "Notes"));
+      ContactData contact = new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
+              "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
+              "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
+              "Minsk", "+5555555555", "Notes");
+    app.getGroupContactHelper().fillAddressBookForm( contact);
     app.getGroupContactHelper().updateAddressBook();
     List<ContactData> after = app.getGroupContactHelper().getContactList();
-    Assert.assertEquals(after.size(), before.size());
    // int after = app.getGroupContactHelper().getContactCount();
-  Assert.assertEquals(after, before); //сравнение количества контактов до и после модиффикации
-   // before.remove(before.size()-1);
-   // Assert.assertEquals( new HashSet<Object>(before), new HashSet<Object>(after)); //сравниваем списки
+    Assert.assertEquals(after.size(), before.size());
+   // Assert.assertEquals(after, before); //сравнение количества контактов до и после модиффикации
+ before.remove(before.size()-1);
+ before.add(contact);
+  Assert.assertEquals( new HashSet<Object>(before), new HashSet<Object>(after)); //сравниваем списки
 
   }
 }
