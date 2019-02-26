@@ -164,11 +164,12 @@ public class GroupContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
       for (WebElement element : elements) {
-      String lastname = element.getText();
-      ContactData contact = new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
-              "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
-              "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
-              "Minsk", "+5555555555", "Notes");
+      String userfirstname = element.getText();
+      String usermiddlename = element.getText();
+      String userlastname =  element.getText();
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      ContactData contact = new ContactData(id, userfirstname, usermiddlename,userlastname, null, null, null,
+              null, null, null, null, null, null, null, null, null,null, null);
       contacts.add(contact);
     }
     return contacts;

@@ -3,6 +3,7 @@ package ru.stqa.pft1.addressbook1.model;
 import java.util.Objects;
 
 public class ContactData {
+  private final String id;
   private final String userfirstname;
   private final String usermiddlename;
   private final String userlastname;
@@ -22,11 +23,17 @@ public class ContactData {
   private final String usernotes;
 
 
-  public ContactData(String userfirstname, String usermiddlename,
+
+
+
+
+
+  public ContactData(String id, String userfirstname, String usermiddlename,
                      String userlastname, String usernickname, String usercompany, String useraddress,
                      String userhomephone, String usermobilephone, String userworkphone, String userfax, String useremail,
                      String useremail2, String useremail3, String userhomepage, String useraddress2, String userphone2,
                      String usernotes) {
+    this.id = id;
     this.userfirstname = userfirstname;
     this.usermiddlename = usermiddlename;
     this.userlastname = userlastname;
@@ -46,95 +53,117 @@ public class ContactData {
     this.usernotes = usernotes;
   }
 
+  public ContactData(String userfirstname, String usermiddlename,
+                     String userlastname, String usernickname, String usercompany, String useraddress,
+                     String userhomephone, String usermobilephone, String userworkphone, String userfax, String useremail,
+                     String useremail2, String useremail3, String userhomepage, String useraddress2, String userphone2,
+                     String usernotes) {
+    this.id = null;
+    this.userfirstname = userfirstname;
+    this.usermiddlename = usermiddlename;
+    this.userlastname = userlastname;
+    this.usernickname = usernickname;
+    this.usercompany = usercompany;
+    this.useraddress = useraddress;
+    this.userhomephone = userhomephone;
+    this.usermobilephone = usermobilephone;
+    this.userworkphone = userworkphone;
+    this.userfax = userfax;
+    this.useremail = useremail;
+    this.useremail2 = useremail2;
+    this.useremail3 = useremail3;
+    this.userhomepage = userhomepage;
+    this.useraddress2 = useraddress2;
+    this.userphone2 = userphone2;
+    this.usernotes = usernotes;
+  }
+
+
+
+
+  public String getId() {     return id;   }
   public String getUserfirstname() {
     return userfirstname;
   }
-
   public String getUsermiddlename() {
     return usermiddlename;
   }
-
   public String getUserlastname() {
     return userlastname;
   }
-
   public String getUsernickname() {
     return usernickname;
   }
-
   public String getUsercompany() {
     return usercompany;
   }
-
   public String getUseraddress() {
     return useraddress;
   }
-
   public String getUserhomephone() {
     return userhomephone;
   }
-
   public String getUsermobilephone() {
     return usermobilephone;
   }
-
   public String getUserworkphone() {
     return userworkphone;
   }
-
   public String getUserfax() {
     return userfax;
   }
-
   public String getUseremail() {
     return useremail;
   }
-
   public String getUseremail2() {
     return useremail2;
   }
-
   public String getUseremail3() {
     return useremail3;
   }
-
   public String getUserhomepage() {
     return userhomepage;
   }
-
   public String getUseraddress2() {
     return useraddress2;
   }
-
   public String getUserphone2() {
     return userphone2;
   }
-
   public String getUsernotes() {
     return usernotes;
-  }
-
-
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            ", userlastname='" + userlastname + '\'' +
-            '}';
   }
 
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(userlastname, that.userlastname);
+
+    ContactData contactData = (ContactData) o;
+
+    if (id != null ? !id.equals(contactData.id) : contactData.id != null) return false;
+    if (userfirstname != null ? !userfirstname.equals(contactData.userfirstname) : contactData.userfirstname != null) return false;
+    if (usermiddlename != null ? !usermiddlename.equals(contactData.usermiddlename) : contactData.usermiddlename != null)
+      return false;
+    return userlastname != null ? userlastname.equals(contactData.userlastname) : contactData.userlastname == null;
   }
 
   @Override
   public int hashCode() {
-
-    return Objects.hash(userlastname);
+    int result = id != null ? id.hashCode() : 0;
+    result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
+    result = 31 * result + (usermiddlename != null ? usermiddlename.hashCode() : 0);
+    result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
+    return result;
+  }
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", userfirstname='" + userfirstname + '\'' +
+            ", usermiddlename='" + usermiddlename + '\'' +
+            ", userlastname='" + userlastname + '\'' +
+            '}';
   }
 }
 
