@@ -3,7 +3,7 @@ package ru.stqa.pft1.addressbook1.model;
 import java.util.Objects;
 
 public class ContactData {
-  private final String id;
+  private int id;
   private final String userfirstname;
   private final String usermiddlename;
   private final String userlastname;
@@ -28,12 +28,12 @@ public class ContactData {
 
 
 
-  public ContactData(String id, String userfirstname, String usermiddlename,
+  public ContactData(int id, String userfirstname, String usermiddlename,
                      String userlastname, String usernickname, String usercompany, String useraddress,
                      String userhomephone, String usermobilephone, String userworkphone, String userfax, String useremail,
                      String useremail2, String useremail3, String userhomepage, String useraddress2, String userphone2,
                      String usernotes) {
-    this.id = id;
+    this.id = 0;
     this.userfirstname = userfirstname;
     this.usermiddlename = usermiddlename;
     this.userlastname = userlastname;
@@ -58,7 +58,7 @@ public class ContactData {
                      String userhomephone, String usermobilephone, String userworkphone, String userfax, String useremail,
                      String useremail2, String useremail3, String userhomepage, String useraddress2, String userphone2,
                      String usernotes) {
-    this.id = null;
+    this.id = id;
     this.userfirstname = userfirstname;
     this.usermiddlename = usermiddlename;
     this.userlastname = userlastname;
@@ -79,9 +79,40 @@ public class ContactData {
   }
 
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
 
+    ContactData that = (ContactData) o;
 
-  public String getId() {     return id;   }
+    if (id != that.id) return false;
+    if (userfirstname != null ? !userfirstname.equals(that.userfirstname) : that.userfirstname != null) return false;
+    if (usermiddlename != null ? !usermiddlename.equals(that.usermiddlename) : that.usermiddlename != null)
+      return false;
+    return userlastname != null ? userlastname.equals(that.userlastname) : that.userlastname == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
+    result = 31 * result + (usermiddlename != null ? usermiddlename.hashCode() : 0);
+    result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", userfirstname='" + userfirstname + '\'' +
+            ", usermiddlename='" + usermiddlename + '\'' +
+            ", userlastname='" + userlastname + '\'' +
+            '}';
+  }
+
+  public int getId() {     return id;   }
   public String getUserfirstname() {
     return userfirstname;
   }
@@ -134,36 +165,5 @@ public class ContactData {
     return usernotes;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData contactData = (ContactData) o;
-
-    if (id != null ? !id.equals(contactData.id) : contactData.id != null) return false;
-    if (userfirstname != null ? !userfirstname.equals(contactData.userfirstname) : contactData.userfirstname != null) return false;
-    if (usermiddlename != null ? !usermiddlename.equals(contactData.usermiddlename) : contactData.usermiddlename != null)
-      return false;
-    return userlastname != null ? userlastname.equals(contactData.userlastname) : contactData.userlastname == null;
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
-    result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
-    result = 31 * result + (usermiddlename != null ? usermiddlename.hashCode() : 0);
-    result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
-    return result;
-  }
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", userfirstname='" + userfirstname + '\'' +
-            ", usermiddlename='" + usermiddlename + '\'' +
-            ", userlastname='" + userlastname + '\'' +
-            '}';
-  }
 }
 

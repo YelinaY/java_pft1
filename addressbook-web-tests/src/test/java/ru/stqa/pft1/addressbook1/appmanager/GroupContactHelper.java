@@ -167,7 +167,7 @@ public class GroupContactHelper extends HelperBase {
       String userfirstname = element.getText();
       String usermiddlename = element.getText();
       String userlastname =  element.getText();
-      String id = element.findElement(By.tagName("input")).getAttribute("value");
+             int id = Integer.parseInt(element.findElement(By.cssSelector("input.tr:nth-child(2)")).getAttribute("value"));
       ContactData contact = new ContactData(id, userfirstname, usermiddlename,userlastname, null, null, null,
               null, null, null, null, null, null, null, null, null,null, null);
       contacts.add(contact);
