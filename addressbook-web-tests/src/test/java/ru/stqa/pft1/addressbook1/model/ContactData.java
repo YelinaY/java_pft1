@@ -1,6 +1,5 @@
 package ru.stqa.pft1.addressbook1.model;
 
-import java.util.Objects;
 
 public class ContactData {
   private int id;
@@ -83,7 +82,6 @@ public class ContactData {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     ContactData contactData = (ContactData) o;
 
     if (id != contactData.id) return false;

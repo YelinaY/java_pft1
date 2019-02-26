@@ -164,10 +164,10 @@ public class GroupContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
    List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
       for (WebElement element : elements) {
-        String userfirstname = wd.findElement(By.cssSelector("#maintable > tbody > tr:nth-child(2) > td:nth-child(3)")).getText();
-        String userlastname = wd.findElement(By.cssSelector("#maintable > tbody > tr:nth-child(2) > td:nth-child(2)")).getText();
-        int id = Integer.parseInt(element.findElement(By.cssSelector("tr")).getAttribute("value"));
-      ContactData contact = new ContactData(id, userfirstname, null,userlastname, null, null, null,
+       String  userfirstname = element.findElement(By.xpath("//td[2]")).getText();
+       String userlastname = element.findElement(By.xpath("//td[3]")).getText();
+       int id = Integer.parseInt(element.findElement(By.xpath("//td/input")).getAttribute("value"));
+        ContactData contact = new ContactData(id, userfirstname, null,userlastname, null, null, null,
               null, null, null, null, null, null, null, null, null,null, null);
       contacts.add(contact);
     }
