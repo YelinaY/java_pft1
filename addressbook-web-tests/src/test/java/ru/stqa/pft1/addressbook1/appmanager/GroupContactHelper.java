@@ -164,9 +164,9 @@ public class GroupContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
    List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
       for (WebElement element : elements) {
-       String  userfirstname = element.findElement(By.xpath("//td[2]")).getText();
-       String userlastname = element.findElement(By.xpath("//td[3]")).getText();
-       int id = Integer.parseInt(element.findElement(By.xpath("//td/input")).getAttribute("value"));
+       String  userfirstname = element.findElement(By.xpath("//tr[4]/td[3]")).getText();
+       String userlastname = element.findElement(By.xpath("//tr[4]/td[2]")).getText();
+       int id = Integer.parseInt(element.findElement(By.xpath("//tr[4]/td/input")).getAttribute("value"));
         ContactData contact = new ContactData(id, userfirstname, null,userlastname, null, null, null,
               null, null, null, null, null, null, null, null, null,null, null);
       contacts.add(contact);
