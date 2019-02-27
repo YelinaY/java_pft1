@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class GroupModificationTests extends TestBase {
   public void testGroupModification() {
     app.getGroupContactHelper().gotoGroupPage();
     if (! app.getGroupContactHelper().isThereAGroup()){
-      app.getGroupContactHelper().createGroup(new GroupData("Test1", null, "Test3"));
+      app.getGroupContactHelper().createGroup(new GroupData("Test1", null, null));
     }
     app.getGroupContactHelper().gotoGroupPage();
     List<GroupData> before = app.getGroupContactHelper().getGroupList();
@@ -26,11 +28,13 @@ public class GroupModificationTests extends TestBase {
     List<GroupData> after = app.getGroupContactHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() );
    // int after  = app.getGroupContactHelper().getGroupCount();
-   // Assert.assertEquals(after, before); // сравнение количества групп до и после модификации
+   // Assert.assertEquals(after, before);    сравнение количества групп до и после модификации
     before.remove(before.size() -1);
     before.add(group);
-
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); //сравниваем списки
+    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after); //сравниваем списки
 
 
   }
