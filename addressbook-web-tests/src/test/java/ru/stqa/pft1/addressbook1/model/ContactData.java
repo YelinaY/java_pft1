@@ -2,7 +2,7 @@ package ru.stqa.pft1.addressbook1.model;
 
 
 public class ContactData {
-  private int id;
+  private  int id;
   private final String userfirstname;
   private final String usermiddlename;
   private final String userlastname;
@@ -107,6 +107,10 @@ public class ContactData {
   }
 
   public int getId() {     return id;   }
+
+  public void setId(int id) { this.id = id;
+  }
+
   public String getUserfirstname() {
     return userfirstname;
   }
