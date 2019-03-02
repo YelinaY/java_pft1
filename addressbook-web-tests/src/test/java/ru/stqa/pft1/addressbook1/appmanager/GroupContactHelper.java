@@ -70,7 +70,7 @@ public class GroupContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void selectAddressBook(int index)  { wd.findElements((By.name("selected[]"))).get(index).click();
+  public void selectAddressBook(int index)  { wd.findElements(By.xpath(".//td/input")).get(index).click();
   }
 
   public void deleteSelectedAddressBook() {
@@ -162,11 +162,11 @@ public class GroupContactHelper extends HelperBase {
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-   List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
+   List<WebElement> elements = wd.findElements(By.name("entry"));
       for (WebElement element : elements) {
-       String  userfirstname = element.findElement(By.xpath("//tr[4]/td[3]")).getText();
-       String userlastname = element.findElement(By.xpath("//tr[4]/td[2]")).getText();
-       int id = Integer.parseInt(element.findElement(By.xpath("//tr[4]/td/input")).getAttribute("value"));
+       String  userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
+       String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
+       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
         ContactData contact = new ContactData(id, userfirstname, null,userlastname, null, null, null,
               null, null, null, null, null, null, null, null, null,null, null);
       contacts.add(contact);

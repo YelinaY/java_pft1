@@ -14,8 +14,10 @@ public class AddressBookCreationTests extends TestBase {
     app.getGroupContactHelper().gotoHomePage();
    List<ContactData> before = app.getGroupContactHelper().getContactList();
     //int before = app.getGroupContactHelper().getContactCount();
-    ContactData contact = new ContactData("Eлена", null, "Yelina",
-            null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    ContactData contact = new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
+            "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
+            "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
+            "Minsk", "+5555555555", "Notes");
     app.getGroupContactHelper().createContact(contact);
     app.getGroupContactHelper().gotoHomePage();
   List<ContactData> after = app.getGroupContactHelper().getContactList();
