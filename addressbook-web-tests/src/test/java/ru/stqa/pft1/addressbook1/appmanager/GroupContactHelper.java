@@ -120,10 +120,6 @@ public class GroupContactHelper extends HelperBase {
     click(By.linkText("home"));
   }
 
-  public void editAddressBook() {
-    click(By.cssSelector("img[alt=\"Edit\"]"));
-  }
-
   public void updateAddressBook() {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
@@ -173,6 +169,14 @@ public class GroupContactHelper extends HelperBase {
     }
     return contacts;
   }
+
+  public void editAddressBook(int id)  {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+  }
+
+
+
+
 }
 
 
