@@ -3,8 +3,6 @@ package ru.stqa.pft1.addressbook1.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 
@@ -48,7 +46,7 @@ public class GroupContactHelper extends HelperBase {
     type(By.name("address2"), contactData.getUseraddress2());
     type(By.name("phone2"), contactData.getUserphone2());
     type(By.name("notes"), contactData.getUsernotes());
-     }
+  }
 
   public void initGroupCreation() {
     click(By.cssSelector("input[name=\"new\"]"));
@@ -70,7 +68,8 @@ public class GroupContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void selectAddressBook(int index)  { wd.findElements(By.xpath(".//td/input")).get(index).click();
+  public void selectAddressBook(int index) {
+    wd.findElements(By.xpath(".//td/input")).get(index).click();
   }
 
   public void deleteSelectedAddressBook() {
@@ -105,6 +104,10 @@ public class GroupContactHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
+  public void editAddressBook(int index) {
+    wd.findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
+  }
+
   public void initAddressBookCreation() {
     click(By.linkText("add new"));
   }
@@ -124,11 +127,9 @@ public class GroupContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
-
   public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
-
 
   public void createContact(ContactData contactData) {
     gotoHomePage();
@@ -158,25 +159,17 @@ public class GroupContactHelper extends HelperBase {
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-   List<WebElement> elements = wd.findElements(By.name("entry"));
-      for (WebElement element : elements) {
-       String  userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
-       String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
-       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-        ContactData contact = new ContactData(id, userfirstname, null,userlastname, null, null, null,
-              null, null, null, null, null, null, null, null, null,null, null);
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element : elements) {
+      String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
+      String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData(id, userfirstname, null, userlastname, null, null, null,
+              null, null, null, null, null, null, null, null, null, null, null);
       contacts.add(contact);
     }
     return contacts;
   }
-
-  public void editAddressBook(int index)  {
-    wd.findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
-  }
-
-
-
-
 }
 
 

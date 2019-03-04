@@ -1,8 +1,7 @@
 package ru.stqa.pft1.addressbook1.model;
 
-
 public class ContactData {
-  private  int id;
+  private int id;
   private final String userfirstname;
   private final String usermiddlename;
   private final String userlastname;
@@ -20,12 +19,6 @@ public class ContactData {
   private final String useraddress2;
   private final String userphone2;
   private final String usernotes;
-
-
-
-
-
-
 
   public ContactData(int id, String userfirstname, String usermiddlename,
                      String userlastname, String usernickname, String usercompany, String useraddress,
@@ -77,15 +70,14 @@ public class ContactData {
     this.usernotes = usernotes;
   }
 
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData contactData = (ContactData) o;
-
     if (id != contactData.id) return false;
-    if (userfirstname != null ? !userfirstname.equals(contactData.userfirstname) : contactData.userfirstname != null) return false;
+    if (userfirstname != null ? !userfirstname.equals(contactData.userfirstname) : contactData.userfirstname != null)
+      return false;
     return userlastname != null ? userlastname.equals(contactData.userlastname) : contactData.userlastname == null;
   }
 
@@ -106,62 +98,80 @@ public class ContactData {
             '}';
   }
 
-  public int getId() {     return id;   }
+  public int getId() {
+    return id;
+  }
 
-  public void setId(int id) { this.id = id;
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getUserfirstname() {
     return userfirstname;
   }
+
   public String getUsermiddlename() {
     return usermiddlename;
   }
+
   public String getUserlastname() {
     return userlastname;
   }
+
   public String getUsernickname() {
     return usernickname;
   }
+
   public String getUsercompany() {
     return usercompany;
   }
+
   public String getUseraddress() {
     return useraddress;
   }
+
   public String getUserhomephone() {
     return userhomephone;
   }
+
   public String getUsermobilephone() {
     return usermobilephone;
   }
+
   public String getUserworkphone() {
     return userworkphone;
   }
+
   public String getUserfax() {
     return userfax;
   }
+
   public String getUseremail() {
     return useremail;
   }
+
   public String getUseremail2() {
     return useremail2;
   }
+
   public String getUseremail3() {
     return useremail3;
   }
+
   public String getUserhomepage() {
     return userhomepage;
   }
+
   public String getUseraddress2() {
     return useraddress2;
   }
+
   public String getUserphone2() {
     return userphone2;
   }
+
   public String getUsernotes() {
     return usernotes;
   }
-
 }
 

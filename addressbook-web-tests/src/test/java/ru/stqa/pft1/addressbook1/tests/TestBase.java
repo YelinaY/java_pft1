@@ -7,14 +7,17 @@ import ru.stqa.pft1.addressbook1.appmanager.ApplicationManager;
 
 public class TestBase {
   protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+
   @BeforeMethod
   public void setUp() throws Exception {
     app.init();
   }
+
   @AfterMethod
   public void tearDown() {
     app.stop();
   }
+
   public ApplicationManager getApp() {
     return app;
   }

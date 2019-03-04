@@ -5,7 +5,8 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class HelperBase { protected WebDriver wd;
+public class HelperBase {
+  protected WebDriver wd;
 
   public HelperBase(WebDriver wd) {
     this.wd = wd;
@@ -19,12 +20,13 @@ public class HelperBase { protected WebDriver wd;
     click(locator);
     if (text != null) {
       String existingText = wd.findElement(locator).getAttribute("value");
-      if (! text.equals(existingText)){
+      if (!text.equals(existingText)) {
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
       }
     }
   }
+
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();

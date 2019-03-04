@@ -10,9 +10,7 @@ public class GroupData {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     GroupData groupData = (GroupData) o;
-
     return name != null ? name.equals(groupData.name) : groupData.name == null;
   }
 
@@ -26,19 +24,22 @@ public class GroupData {
     this.name = name;
     this.header = header;
     this.footer = footer;
-
   }
 
   public GroupData(int id, String name, String header, String footer) {
-   this.id = id;
+    this.id = id;
     this.name = name;
     this.header = header;
     this.footer = footer;
-
   }
-  public int getId() {return id;}
 
-  public void setId(int id) {  this.id = id;  }
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public String getName() {
     return name;
@@ -52,14 +53,11 @@ public class GroupData {
     return footer;
   }
 
-
-
   @Override
   public String toString() {
     return "GroupData{" +
-            "id='" + id +'\'' +
+            "id='" + id + '\'' +
             "name='" + name + '\'' +
             '}';
   }
-
 }

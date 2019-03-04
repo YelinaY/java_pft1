@@ -7,11 +7,10 @@ import ru.stqa.pft1.addressbook1.model.GroupData;
 import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
-
   @Test
   public void testGroupDeletion() {
     app.getGroupContactHelper().gotoGroupPage();
-    if (! app.getGroupContactHelper().isThereAGroup()){
+    if (!app.getGroupContactHelper().isThereAGroup()) {
       app.getGroupContactHelper().createGroup(new GroupData("Test1", null, "Test3"));
     }
     app.getGroupContactHelper().gotoGroupPage();
@@ -21,15 +20,12 @@ public class GroupDeletionTests extends TestBase {
     app.getGroupContactHelper().deleteSelectedGrpoup();
     app.getGroupContactHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupContactHelper().getGroupList();
-    Assert.assertEquals(after.size(), before.size() -1); // старый список содержит на 1 объект меньше
-
-    before.remove(before.size()-1);//удаляем лишний элемент перед сравнением списков
-    Assert.assertEquals(before,after); //сравниваем списки
-
+    Assert.assertEquals(after.size(), before.size() - 1); // старый список содержит на 1 объект меньше
+    before.remove(before.size() - 1);//удаляем лишний элемент перед сравнением списков
+    Assert.assertEquals(before, after); //сравниваем списки
     //int after  = app.getGroupContactHelper().getGroupCount();
     //Assert.assertEquals(after, before -1); // сравнение количества групп до и после удаления
-
     //before.remove(before.size()-1); //  удаляю лишний элемент
     //Assert.assertEquals(before, after);
-    }
   }
+}

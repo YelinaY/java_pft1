@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class AddressBookDeletion extends TestBase {
-
   @Test
   public void testGroupDeletion() {
     app.getGroupContactHelper().gotoHomePage();
@@ -21,7 +20,6 @@ public class AddressBookDeletion extends TestBase {
     app.getGroupContactHelper().gotoHomePage();
     List<ContactData> before = app.getGroupContactHelper().getContactList();
     // int before = app.getGroupContactHelper().getContactCount();
-
     app.getGroupContactHelper().selectAddressBook(before.size() - 2);
     // app.getGroupContactHelper().selectAddressBook(before -1); // удаление первого контакта в списке
     app.getGroupContactHelper().deleteSelectedAddressBook();
@@ -34,6 +32,5 @@ public class AddressBookDeletion extends TestBase {
     //Assert.assertEquals(before, after);
     before.remove(before.size() - 1);//удаляем лишний элемент перед сравнением списков
     Assert.assertEquals(before, after); //сравниваем списки
-
   }
 }
