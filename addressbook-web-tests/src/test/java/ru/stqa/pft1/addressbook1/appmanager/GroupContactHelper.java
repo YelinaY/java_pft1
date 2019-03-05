@@ -170,6 +170,13 @@ public class GroupContactHelper extends HelperBase {
     }
     return contacts;
   }
+  public void modifyGroup(int index, GroupData group) {
+    selectGroup(index); //выбрать последнюю группу
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
 }
 
 

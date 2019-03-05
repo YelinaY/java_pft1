@@ -17,7 +17,6 @@ public class GroupCreationTests extends TestBase {
     app.getGroupContactHelper().createGroup(group);
     List<GroupData> after = app.getGroupContactHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
-   // group.setId(after.stream().max((g1, g2) -> Integer.compare(g1.getId(), g2.getId())).get().getId());
     before.add(group);
     Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
     before.sort(byId);
