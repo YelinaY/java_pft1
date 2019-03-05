@@ -34,8 +34,5 @@ public class AddressBookCreationTests extends TestBase {
     contact.setId(max);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); //сравниваем списки
 
-    //  Assert.assertEquals(after.size(), before.size() +1);
-    //int after = app.getGroupContactHelper().getContactCount();
-    //Assert.assertEquals(after, before +1); //сравнение количества контактов до и после создания
-  }
+     }
 }
