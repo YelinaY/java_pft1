@@ -10,9 +10,9 @@ import java.util.List;
 public class AddressBookModification extends TestBase {
   @BeforeMethod
   public void ensurePreconditions(){
-    app.getGroupContactHelper().gotoHomePage();
-    if (!app.getGroupContactHelper().isThereAddressBook()) {
-      app.getGroupContactHelper().createContact(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
+    app.contacstGroups().gotoHomePage();
+    if (!app.contacstGroups().isThereAddressBook()) {
+      app.contacstGroups().createContact(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
               "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
               "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
               "Minsk", "+5555555555", "Notes"));
@@ -21,16 +21,16 @@ public class AddressBookModification extends TestBase {
 
   @Test
   public void testAddressBookModification() {
-    app.getGroupContactHelper().gotoHomePage();
-    List<ContactData> before = app.getGroupContactHelper().getContactList();
+    app.contacstGroups().gotoHomePage();
+    List<ContactData> before = app.contacstGroups().contactList();
     int index = before.size() - 1;
     ContactData contact = new ContactData(before.get(index).getId(), "Eлена", "Yel", "Yelina",
             "Lina", "TCWD", "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
             "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
             "Minsk", "+5555555555", "Notes");
 
-    app.getGroupContactHelper().modifyContact(index, contact);
-    List<ContactData> after = app.getGroupContactHelper().getContactList();
+    app.contacstGroups().modifyContact(index, contact);
+    List<ContactData> after = app.contacstGroups().contactList();
     before.remove(index);
     before.add(contact);
     Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());

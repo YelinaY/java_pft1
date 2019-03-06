@@ -40,11 +40,11 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupContactHelper getGroupContactHelper() {
+  public GroupContactHelper contacstGroups() {
     return groupContactHelper;
   }
 
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper gonTo() {
     return navigationHelper;
   }
 }

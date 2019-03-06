@@ -95,7 +95,7 @@ public class GroupContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void gotoGroupPage() {
+  public void groupPage() {
     if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Groups")
             && isElementPresent(By.name("new"))) {
@@ -145,7 +145,7 @@ public class GroupContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> getGroupList() {  // метод создает коллекцию элементов
+  public List<GroupData> groupList() {  // метод создает коллекцию элементов
     List<GroupData> groups = new ArrayList<GroupData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
@@ -157,7 +157,7 @@ public class GroupContactHelper extends HelperBase {
     return groups;
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> contactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -186,6 +186,11 @@ public class GroupContactHelper extends HelperBase {
     selectAddressBook(index);
     deleteSelectedAddressBook();
     confirmDeletion();
+  }
+    public void deleteGroup(int index) {
+    selectGroup(index);
+    deleteSelectedGrpoup();
+    returnToGroupPage();
   }
 }
 

@@ -10,19 +10,19 @@ import java.util.List;
 public class GroupModificationTests extends TestBase {
 @BeforeMethod
 public void ensurePreconditions(){
-  app.getGroupContactHelper().gotoGroupPage();
-  if (!app.getGroupContactHelper().isThereAGroup()) {
-    app.getGroupContactHelper().createGroup(new GroupData("Test1", null, null));
+  app.contacstGroups().groupPage();
+  if (!app.contacstGroups().isThereAGroup()) {
+    app.contacstGroups().createGroup(new GroupData("Test1", null, null));
   }
 }
 
   @Test
   public void testGroupModification() {
-    List<GroupData> before = app.getGroupContactHelper().getGroupList();
+    List<GroupData> before = app.contacstGroups().groupList();
     int index = before.size() - 1;
     GroupData group = new GroupData(before.get(index).getId(), "Test1", "Test2", "Test3");
-    app.getGroupContactHelper().modifyGroup(index, group);
-    List<GroupData> after = app.getGroupContactHelper().getGroupList();
+    app.contacstGroups().modifyGroup(index, group);
+    List<GroupData> after = app.contacstGroups().groupList();
     Assert.assertEquals(after.size(), before.size());
     before.remove(index);
     before.add(group);
