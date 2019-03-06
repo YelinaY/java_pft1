@@ -177,6 +177,16 @@ public class GroupContactHelper extends HelperBase {
     submitGroupModification();
     returnToGroupPage();
   }
+  public void modifyContact(int index, ContactData contact) {
+    editAddressBook(index);
+   fillAddressBookForm(contact);
+   updateAddressBook();
+  }
+  public void deleteContact(int index) {
+    selectAddressBook(index);
+    deleteSelectedAddressBook();
+    confirmDeletion();
+  }
 }
 
 
