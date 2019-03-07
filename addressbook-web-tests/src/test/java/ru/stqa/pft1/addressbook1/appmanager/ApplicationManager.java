@@ -40,7 +40,7 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupContactHelper contacstGroups() {
+  public GroupContactHelper groupsContacts() {
     return groupContactHelper;
   }
 

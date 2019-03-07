@@ -134,10 +134,12 @@ public class GroupContactHelper extends HelperBase {
   public void createContact(ContactData contactData) {
     gotoHomePage();
     initAddressBookCreation();
-    fillAddressBookForm(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
-            "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
-            "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
-            "Minsk", "+5555555555", "Notes"));
+    fillAddressBookForm(new ContactData().withUserfirstname("Eлена").withUserlastname("Yelina").
+            withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
+            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").withUserfax("+222222222").
+            withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
+            withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
+            withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes"));
     submitNewAddressBook();
   }
 
@@ -151,8 +153,7 @@ public class GroupContactHelper extends HelperBase {
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      GroupData group = new GroupData(id, name, null, null);
-      groups.add(group);
+      groups.add(new GroupData().withId(id).withName(name));
     }
     return groups;
   }
@@ -164,9 +165,7 @@ public class GroupContactHelper extends HelperBase {
       String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
       String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, userfirstname, null, userlastname, null, null, null,
-              null, null, null, null, null, null, null, null, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withUserfirstname(userfirstname).withUserlastname(userlastname));
     }
     return contacts;
   }

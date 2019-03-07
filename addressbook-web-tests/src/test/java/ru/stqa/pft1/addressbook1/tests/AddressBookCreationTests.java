@@ -4,34 +4,23 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
 
 public class AddressBookCreationTests extends TestBase {
   @Test
   public void testNewAddressBookCreation() {
-    app.contacstGroups().gotoHomePage();
-    List<ContactData> before = app.contacstGroups().contactList();
-    ContactData contact = new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
-            "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
-            "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
-            "Minsk", "+5555555555", "Notes");
-    app.contacstGroups().createContact(contact);
-    app.contacstGroups().gotoHomePage();
-    List<ContactData> after = app.contacstGroups().contactList();
+    app.groupsContacts().gotoHomePage();
+    List<ContactData> before = app.groupsContacts().contactList();
+    ContactData contact = new ContactData().withUserfirstname("Eлена").withUserlastname("Yelina");
+    app.groupsContacts().createContact(contact);
+    app.groupsContacts().gotoHomePage();
+    List<ContactData> after = app.groupsContacts().contactList();
     Assert.assertEquals(after.size(), before.size() + 1);
-
-    after.remove(after.size() - 1); //удаляем лишний элемент перед сравнением списков
+    before.add(contact);
+    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+    before.sort(byId);
+    after.sort(byId);
     Assert.assertEquals(before, after); //сравниваем списки
-    before.add(contact);
-    int max = 0;
-    for (ContactData c : after) {
-      if (c.getId() > max) {
-      }
-    }
-    before.add(contact);
-    contact.setId(max);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); //сравниваем списки
-
      }
 }

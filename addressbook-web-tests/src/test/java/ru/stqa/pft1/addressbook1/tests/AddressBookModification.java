@@ -10,27 +10,31 @@ import java.util.List;
 public class AddressBookModification extends TestBase {
   @BeforeMethod
   public void ensurePreconditions(){
-    app.contacstGroups().gotoHomePage();
-    if (!app.contacstGroups().isThereAddressBook()) {
-      app.contacstGroups().createContact(new ContactData("Eлена", "Yel", "Yelina", "Lina", "TCWD",
-              "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
-              "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
-              "Minsk", "+5555555555", "Notes"));
+    app.groupsContacts().gotoHomePage();
+    if (!app.groupsContacts().isThereAddressBook()) {
+      app.groupsContacts().createContact(new ContactData().withUserfirstname("Eлена").withUserlastname("Yelina").
+              withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
+              withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").withUserfax("+222222222").
+              withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
+              withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
+              withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes"));
     }
   }
 
   @Test
   public void testAddressBookModification() {
-    app.contacstGroups().gotoHomePage();
-    List<ContactData> before = app.contacstGroups().contactList();
+    app.groupsContacts().gotoHomePage();
+    List<ContactData> before = app.groupsContacts().contactList();
     int index = before.size() - 1;
-    ContactData contact = new ContactData(before.get(index).getId(), "Eлена", "Yel", "Yelina",
-            "Lina", "TCWD", "Paris, Royal sq.", "+1111111111", "+222222222", "+33333333",
-            "+44444444", "mail@mail.com", "mail1@mail.com", "mail3@mail.com", "URL",
-            "Minsk", "+5555555555", "Notes");
+    ContactData contact = new ContactData().withId(before.get(index).getId()). withUserfirstname("Eлена").withUserlastname("Yelina").
+            withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
+            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").withUserfax("+222222222").
+            withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
+            withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
+            withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes");
 
-    app.contacstGroups().modifyContact(index, contact);
-    List<ContactData> after = app.contacstGroups().contactList();
+    app.groupsContacts().modifyContact(index, contact);
+    List<ContactData> after = app.groupsContacts().contactList();
     before.remove(index);
     before.add(contact);
     Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());

@@ -10,19 +10,19 @@ import java.util.List;
 public class GroupDeletionTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions(){
-    app.contacstGroups().groupPage();
-    if (!app.contacstGroups().isThereAGroup()) {
-      app.contacstGroups().createGroup(new GroupData("Test1", null, null));
+    app.groupsContacts().groupPage();
+    if (!app.groupsContacts().isThereAGroup()) {
+      app.groupsContacts().createGroup(new GroupData().withName("test2"));
     }
   }
 
 
   @Test
   public void testGroupDeletion() {
-    List<GroupData> before = app.contacstGroups().groupList();
+    List<GroupData> before = app.groupsContacts().groupList();
     int index = before.size() - 1;
-    app.contacstGroups().deleteGroup(index);
-    List<GroupData> after = app.contacstGroups().groupList();
+    app.groupsContacts().deleteGroup(index);
+    List<GroupData> after = app.groupsContacts().groupList();
     Assert.assertEquals(after.size(), index); // старый список содержит на 1 объект меньше
 
     before.remove(index);//удаляем лишний элемент перед сравнением списков
