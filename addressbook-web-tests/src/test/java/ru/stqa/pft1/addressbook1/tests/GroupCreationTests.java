@@ -6,21 +6,21 @@ import ru.stqa.pft1.addressbook1.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class GroupCreationTests extends TestBase {
 
   @Test
   public void testGroupCreaton() {
     app.groupsContacts().groupPage();
-    List<GroupData> before = app.groupsContacts().groupList();
+    Set<GroupData> before = app.groupsContacts().all();
     GroupData group = new GroupData().withName("test2");
     app.groupsContacts().createGroup(group);
-    List<GroupData> after = app.groupsContacts().groupList();
+    Set<GroupData> after = app.groupsContacts().all();
     Assert.assertEquals(after.size(), before.size() + 1);
+    group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()); //функция которая преобразует индификатор в число
     before.add(group);
-    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-    before.sort(byId);
-    after.sort(byId);
+
     Assert.assertEquals(before, after); //сравниваем списки
   }
 }

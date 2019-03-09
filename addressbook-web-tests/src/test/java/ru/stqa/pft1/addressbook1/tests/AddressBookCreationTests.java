@@ -6,21 +6,21 @@ import ru.stqa.pft1.addressbook1.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class AddressBookCreationTests extends TestBase {
   @Test
   public void testNewAddressBookCreation() {
     app.groupsContacts().gotoHomePage();
-    List<ContactData> before = app.groupsContacts().contactList();
+    Set<ContactData> before = app.groupsContacts().allc();
     ContactData contact = new ContactData().withUserfirstname("Eлена").withUserlastname("Yelina");
     app.groupsContacts().createContact(contact);
     app.groupsContacts().gotoHomePage();
-    List<ContactData> after = app.groupsContacts().contactList();
+    Set<ContactData> after = app.groupsContacts().allc();
     Assert.assertEquals(after.size(), before.size() + 1);
+
+    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
     before.add(contact);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before, after); //сравниваем списки
      }
 }

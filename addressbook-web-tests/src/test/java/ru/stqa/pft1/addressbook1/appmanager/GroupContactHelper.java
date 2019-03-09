@@ -7,7 +7,9 @@ import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupContactHelper extends HelperBase {
   public GroupContactHelper(WebDriver wd) {
@@ -55,6 +57,8 @@ public class GroupContactHelper extends HelperBase {
   public void deleteSelectedGrpoup() {
     click(By.name("delete"));
   }
+
+
 
   public void selectGroup(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
@@ -159,7 +163,16 @@ public class GroupContactHelper extends HelperBase {
     }
     return groups;
   }
-
+  public Set<GroupData> all() {
+    Set<GroupData> groups = new HashSet<GroupData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      groups.add(new GroupData().withId(id).withName(name));
+    }
+    return groups;
+  }
   public List<ContactData> contactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
@@ -171,6 +184,20 @@ public class GroupContactHelper extends HelperBase {
     }
     return contacts;
   }
+  public Set<ContactData> allc() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element : elements) {
+      String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
+      String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withUserfirstname(userfirstname).withUserlastname(userlastname));
+    }
+    return contacts;
+  }
+
+
+
   public void modifyGroup(int index, GroupData group) {
     selectGroup(index); //выбрать последнюю группу
     initGroupModification();
@@ -188,11 +215,35 @@ public class GroupContactHelper extends HelperBase {
     deleteSelectedAddressBook();
     confirmDeletion();
   }
-    public void deleteGroup(int index) {
+  public void deleteContact(ContactData contact) {
+    selectAddressBookById(contact.getId());
+    deleteSelectedAddressBook();
+    confirmDeletion();
+   }
+  public void selectAddressBookById(int id) {
+   wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
+  public void deleteGroup(int index) {
     selectGroup(index);
     deleteSelectedGrpoup();
     returnToGroupPage();
   }
+
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
+
+
+
+  public void deleteGroup(GroupData group) {
+    selectGroupById(group.getId());
+    deleteSelectedGrpoup();
+    returnToGroupPage();
+  }
+
+
 }
 
 

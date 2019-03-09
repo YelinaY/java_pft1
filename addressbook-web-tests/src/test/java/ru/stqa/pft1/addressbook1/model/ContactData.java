@@ -20,25 +20,6 @@ public class ContactData {
   private  String userphone2;
   private  String usernotes;
 
-   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData contactData = (ContactData) o;
-    if (id != contactData.id) return false;
-    if (userfirstname != null ? !userfirstname.equals(contactData.userfirstname) : contactData.userfirstname != null)
-      return false;
-    return userlastname != null ? userlastname.equals(contactData.userlastname) : contactData.userlastname == null;
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
-    result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
-    return result;
-  }
-
   @Override
   public String toString() {
     return "ContactData{" +
@@ -115,6 +96,26 @@ public class ContactData {
 
   public String getUsernotes() {
     return usernotes;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != that.id) return false;
+    if (userfirstname != null ? !userfirstname.equals(that.userfirstname) : that.userfirstname != null) return false;
+    return userlastname != null ? userlastname.equals(that.userlastname) : that.userlastname == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
+    result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
+    return result;
   }
 
   //public ContactData setId(int id) {this.id=id;return this;}
