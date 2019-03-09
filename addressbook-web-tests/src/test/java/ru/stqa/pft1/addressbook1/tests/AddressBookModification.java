@@ -33,7 +33,7 @@ public class AddressBookModification extends TestBase {
             withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
             withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes");
 
-    app.groupsContacts().modifyContact(index, contact);
+    app.groupsContacts().modifyContact(contact);
     List<ContactData> after = app.groupsContacts().contactList();
     before.remove(index);
     before.add(contact);

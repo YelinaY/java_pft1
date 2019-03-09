@@ -104,9 +104,11 @@ public class GroupContactHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
-  public void editAddressBook(int index) {
-    wd.findElement(By.cssSelector("img[alt=\"Edit\"]")).click();
+  public void editAddressBook(int id) {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
   }
+
+
 
   public void initAddressBookCreation() {
     click(By.linkText("add new"));
@@ -176,8 +178,8 @@ public class GroupContactHelper extends HelperBase {
     submitGroupModification();
     returnToGroupPage();
   }
-  public void modifyContact(int index, ContactData contact) {
-    editAddressBook(index);
+  public void modifyContact(ContactData contact) {
+    editAddressBook(contact.getId());
    fillAddressBookForm(contact);
    updateAddressBook();
   }
