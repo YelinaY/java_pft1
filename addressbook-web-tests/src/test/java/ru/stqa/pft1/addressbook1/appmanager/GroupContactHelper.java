@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft1.addressbook1.model.ContactData;
+import ru.stqa.pft1.addressbook1.model.Contacts;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 import ru.stqa.pft1.addressbook1.model.Groups;
 
@@ -185,8 +186,8 @@ public class GroupContactHelper extends HelperBase {
     }
     return contacts;
   }
-  public Set<ContactData> allc() {
-    Set<ContactData> contacts = new HashSet<ContactData>();
+  public Contacts allc() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
