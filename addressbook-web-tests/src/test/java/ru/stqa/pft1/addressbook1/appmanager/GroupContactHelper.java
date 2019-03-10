@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.GroupData;
+import ru.stqa.pft1.addressbook1.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -163,8 +164,8 @@ public class GroupContactHelper extends HelperBase {
     }
     return groups;
   }
-  public Set<GroupData> all() {
-    Set<GroupData> groups = new HashSet<GroupData>();
+  public Groups all() {
+    Groups groups = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
