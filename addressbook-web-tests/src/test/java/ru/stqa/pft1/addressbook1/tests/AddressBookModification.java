@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+
 
 public class AddressBookModification extends TestBase {
   @BeforeMethod
@@ -24,9 +26,10 @@ public class AddressBookModification extends TestBase {
   @Test
   public void testAddressBookModification() {
     app.groupsContacts().gotoHomePage();
-    List<ContactData> before = app.groupsContacts().contactList();
-    int index = before.size() - 1;
-    ContactData contact = new ContactData().withId(before.get(index).getId()). withUserfirstname("Eлена").withUserlastname("Yelina").
+    Set<ContactData> before = app.groupsContacts().allc();
+    ContactData modifiedContact = before.iterator().next();
+    ContactData contact = new ContactData().
+            withId(modifiedContact.getId()). withUserfirstname("Eлена").withUserlastname("Yelina").
             withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
             withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").withUserfax("+222222222").
             withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
@@ -34,13 +37,11 @@ public class AddressBookModification extends TestBase {
             withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes");
 
     app.groupsContacts().modifyContact(contact);
-    List<ContactData> after = app.groupsContacts().contactList();
-    before.remove(index);
+    Set<ContactData> after = app.groupsContacts().allc();
+
+    before.remove(modifiedContact);
     before.add(contact);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
-    Assert.assertEquals(before, after); //сравниваем списки
+    Assert.assertEquals(before, after);
 
   }
 

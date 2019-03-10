@@ -198,18 +198,23 @@ public class GroupContactHelper extends HelperBase {
 
 
 
-  public void modifyGroup(int index, GroupData group) {
-    selectGroup(index); //выбрать последнюю группу
+  public void modifyGroupBuId(GroupData group) {
+    selectGroupById(group.getId());
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
     returnToGroupPage();
   }
   public void modifyContact(ContactData contact) {
-    editAddressBook(contact.getId());
+    editAddressBookById(contact.getId());
    fillAddressBookForm(contact);
    updateAddressBook();
   }
+
+  private void editAddressBookById(int id) { wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+  }
+  
+
   public void deleteContact(int index) {
     selectAddressBook(index);
     deleteSelectedAddressBook();
