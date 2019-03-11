@@ -90,6 +90,7 @@ public class GroupContactHelper extends HelperBase {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
+    groupCache = null;
     returnToGroupPage();
   }
 
@@ -148,6 +149,7 @@ public class GroupContactHelper extends HelperBase {
             withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
             withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
             withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes"));
+    contactCache = null;
     submitNewAddressBook();
   }
 
@@ -165,16 +167,24 @@ public class GroupContactHelper extends HelperBase {
     }
     return groups;
   }
+
+  private Groups groupCache = null;
+
   public Groups all() {
-    Groups groups = new Groups();
+    if (groupCache != null){
+      return new Groups(groupCache);
+  }
+
+    groupCache = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      groups.add(new GroupData().withId(id).withName(name));
+      groupCache.add(new GroupData().withId(id).withName(name));
     }
-    return groups;
+    return new Groups(groupCache);
   }
+
   public List<ContactData> contactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
@@ -186,16 +196,23 @@ public class GroupContactHelper extends HelperBase {
     }
     return contacts;
   }
+
+  private Contacts contactCache = null;
+
   public Contacts allc() {
-    Contacts contacts = new Contacts();
+    if (contactCache != null){
+      return new Contacts(contactCache);
+    }
+
+   contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
       String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withUserfirstname(userfirstname).withUserlastname(userlastname));
+      contactCache.add(new ContactData().withId(id).withUserfirstname(userfirstname).withUserlastname(userlastname));
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
 
 
@@ -205,11 +222,13 @@ public class GroupContactHelper extends HelperBase {
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
+    groupCache = null;
     returnToGroupPage();
   }
   public void modifyContact(ContactData contact) {
     editAddressBookById(contact.getId());
    fillAddressBookForm(contact);
+    contactCache = null;
    updateAddressBook();
   }
 
@@ -225,6 +244,7 @@ public class GroupContactHelper extends HelperBase {
   public void deleteContact(ContactData contact) {
     selectAddressBookById(contact.getId());
     deleteSelectedAddressBook();
+    contactCache = null;
     confirmDeletion();
    }
   public void selectAddressBookById(int id) {
@@ -241,12 +261,10 @@ public class GroupContactHelper extends HelperBase {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
-
-
-
   public void deleteGroup(GroupData group) {
     selectGroupById(group.getId());
     deleteSelectedGrpoup();
+    groupCache = null;
     returnToGroupPage();
   }
 
