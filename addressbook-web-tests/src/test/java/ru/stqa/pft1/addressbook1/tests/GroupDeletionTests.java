@@ -27,6 +27,4 @@ public class GroupDeletionTests extends TestBase {
     Groups after = app.groupsContacts().all();
     assertThat(after, equalTo(before.withOut(deletedGroup)));
   }
-
-
 }
