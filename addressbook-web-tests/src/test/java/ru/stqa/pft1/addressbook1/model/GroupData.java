@@ -1,12 +1,13 @@
 package ru.stqa.pft1.addressbook1.model;
 
 public class GroupData {
-  private int id= Integer.MAX_VALUE;
+  private int id = Integer.MAX_VALUE;
   private String name;
   private String header;
   private String footer;
 
-  public int getId() {    return id;
+  public int getId() {
+    return id;
   }
 
   public String getName() {
@@ -33,11 +34,13 @@ public class GroupData {
 
   public GroupData withHeader(String header) {
     this.header = header;
-    return this;}
+    return this;
+  }
 
   public GroupData withFooter(String footer) {
     this.footer = footer;
-    return this;}
+    return this;
+  }
 
   @Override
   public String toString() {
