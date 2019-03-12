@@ -203,10 +203,16 @@ public class GroupContactHelper extends HelperBase {
     contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
-      String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
-      String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contactCache.add(new ContactData().withId(id).withUserfirstname(userfirstname).withUserlastname(userlastname));
+      String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
+      String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
+      String[] phones = element.findElement(By.xpath(".//td[6]")).getText().split("\n");
+      String [] email = element.findElement(By.xpath(".//td[5]")).getText().split("\n");
+      String address = element.findElement(By.xpath(".//td[4]")).getText();
+      contactCache.add(new ContactData().withId(id).withUserfirstname(userfirstname).
+              withUserlastname(userlastname).withUserhomephone(phones[0]).
+              withUsermobilephone(phones[1]).withUserworkphone(phones[2]).withUseremail(email[0]).
+              withUseremail2(email[1]).withUseremail3(email[2]).withUseraddress(address));
     }
     return new Contacts(contactCache);
   }
