@@ -287,6 +287,24 @@ public class GroupContactHelper extends HelperBase {
             withUserhomephone(home).withUsermobilephone(mobile).withUserworkphone(work);
   }
 
-}
+  public ContactData infoFromAddressForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String address = wd.findElement(By.name("address")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().
+            withId(contact.getId()).withUseraddress(address);
+  }
+
+  public ContactData infoFromEmail(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().
+            withId(contact.getId()).withUseremail(email).withUseremail2(email2).withUseremail3(email3);
+  }
+  }
+
 
 
