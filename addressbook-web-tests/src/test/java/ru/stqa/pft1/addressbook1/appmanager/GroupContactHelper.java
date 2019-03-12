@@ -40,13 +40,11 @@ public class GroupContactHelper extends HelperBase {
     type(By.name("home"), contactData.getUserhomephone());
     type(By.name("mobile"), contactData.getUsermobilephone());
     type(By.name("work"), contactData.getUserworkphone());
-    type(By.name("fax"), contactData.getUserfax());
     type(By.name("email"), contactData.getUseremail());
     type(By.name("email2"), contactData.getUseremail2());
     type(By.name("email3"), contactData.getUseremail3());
     type(By.name("homepage"), contactData.getUserhomepage());
     type(By.name("address2"), contactData.getUseraddress2());
-    type(By.name("phone2"), contactData.getUserphone2());
     type(By.name("notes"), contactData.getUsernotes());
   }
 
@@ -141,8 +139,8 @@ public class GroupContactHelper extends HelperBase {
     initAddressBookCreation();
     fillAddressBookForm(new ContactData().withUserfirstname("Eлена").withUserlastname("Yelina").
             withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
-            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").withUserfax("+222222222").
-            withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
+            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").
+            withUsermobilephone("+33333333").withUseremail("mail@mail.com").
             withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
             withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes"));
     contactCache = null;
@@ -206,12 +204,12 @@ public class GroupContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
       String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
-      String[] phones = element.findElement(By.xpath(".//td[6]")).getText().split("\n");
+      String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
       String [] email = element.findElement(By.xpath(".//td[5]")).getText().split("\n");
       String address = element.findElement(By.xpath(".//td[4]")).getText();
       contactCache.add(new ContactData().withId(id).withUserfirstname(userfirstname).
-              withUserlastname(userlastname).withUserhomephone(phones[0]).
-              withUsermobilephone(phones[1]).withUserworkphone(phones[2]).withUseremail(email[0]).
+              withUserlastname(userlastname).withAllPhones(allPhones)
+              .withUseremail(email[0]).
               withUseremail2(email[1]).withUseremail3(email[2]).withUseraddress(address));
     }
     return new Contacts(contactCache);

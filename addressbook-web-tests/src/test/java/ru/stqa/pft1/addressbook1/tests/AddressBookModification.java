@@ -16,8 +16,8 @@ public class AddressBookModification extends TestBase {
     if (!app.groupsContacts().isThereAddressBook()) {
       app.groupsContacts().createContact(new ContactData().withUserfirstname("Eлена").withUserlastname("Yelina").
               withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
-              withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").withUserfax("+222222222").
-              withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
+              withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").
+              withUsermobilephone("+33333333").withUseremail("mail@mail.com").
               withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
               withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes"));
     }
@@ -31,8 +31,8 @@ public class AddressBookModification extends TestBase {
     ContactData contact = new ContactData().
             withId(modifiedContact.getId()).withUserfirstname("Eлена").withUserlastname("Yelina").
             withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
-            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").withUserfax("+222222222").
-            withUsermobilephone("+33333333").withUserphone2("+44444444").withUseremail("mail@mail.com").
+            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").
+            withUsermobilephone("+33333333").withUseremail("mail@mail.com").
             withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
             withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes");
 

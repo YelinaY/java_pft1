@@ -11,14 +11,25 @@ public class ContactData {
   private String userhomephone;
   private String usermobilephone;
   private String userworkphone;
-  private String userfax;
   private String useremail;
   private String useremail2;
   private String useremail3;
   private String userhomepage;
   private String useraddress2;
-  private String userphone2;
   private String usernotes;
+  private String allPhones;
+
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+
 
   @Override
   public String toString() {
@@ -69,9 +80,6 @@ public class ContactData {
     return userworkphone;
   }
 
-  public String getUserfax() {
-    return userfax;
-  }
 
   public String getUseremail() {
     return useremail;
@@ -93,9 +101,6 @@ public class ContactData {
     return useraddress2;
   }
 
-  public String getUserphone2() {
-    return userphone2;
-  }
 
   public String getUsernotes() {
     return usernotes;
@@ -174,10 +179,7 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withUserfax(String userfax) {
-    this.userfax = userfax;
-    return this;
-  }
+
 
   public ContactData withUseremail(String useremail) {
     this.useremail = useremail;
@@ -204,10 +206,6 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withUserphone2(String userphone2) {
-    this.userphone2 = userphone2;
-    return this;
-  }
 
   public ContactData withUsernotes(String usernotes) {
     this.usernotes = usernotes;
