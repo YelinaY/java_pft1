@@ -18,6 +18,16 @@ public class ContactData {
   private String useraddress2;
   private String usernotes;
   private String allPhones;
+  private String allEmails;
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
 
 
   public String getAllPhones() {
@@ -28,7 +38,6 @@ public class ContactData {
     this.allPhones = allPhones;
     return this;
   }
-
 
 
   @Override
@@ -178,7 +187,6 @@ public class ContactData {
     this.userworkphone = userworkphone;
     return this;
   }
-
 
 
   public ContactData withUseremail(String useremail) {

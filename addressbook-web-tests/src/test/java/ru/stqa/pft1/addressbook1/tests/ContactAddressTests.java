@@ -9,22 +9,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactAddressTests extends TestBase{
 
-    @BeforeMethod
-    public void ensurePreconditions() {
-      app.groupsContacts().gotoHomePage();
-      if (!app.groupsContacts().isThereAddressBook()) {
-        app.groupsContacts().createContact(new ContactData().withUserfirstname("Yelena").withUserlastname("Yelin"));
-      }
-    }
 
     @Test //(enabled = false)
     public void testContacttAddress() {
       app.groupsContacts().gotoHomePage();
       ContactData contact = app.groupsContacts().allc().iterator().next();
       ContactData contactInfoFromAddress = app.groupsContacts().infoFromAddressForm(contact);
-      assertThat(contact.getUseraddress(), equalTo(contactInfoFromAddress.getUseraddress()));
+      assertThat(contact.getUseraddress(), equalTo(cleaned(contactInfoFromAddress.getUseraddress())));
 
     }
+  public String cleaned (String address){
+    return address.replaceAll("\\s", "").replaceAll("[-()]", "");
+  }
+
   }
 
 

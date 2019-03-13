@@ -205,12 +205,11 @@ public class GroupContactHelper extends HelperBase {
       String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
       String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
       String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
-      String [] email = element.findElement(By.xpath(".//td[5]")).getText().split("\n");
+      String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
       String address = element.findElement(By.xpath(".//td[4]")).getText();
       contactCache.add(new ContactData().withId(id).withUserfirstname(userfirstname).
               withUserlastname(userlastname).withAllPhones(allPhones)
-              .withUseremail(email[0]).
-              withUseremail2(email[1]).withUseremail3(email[2]).withUseraddress(address));
+              .withAllEmails(allEmails).withUseraddress(address));
     }
     return new Contacts(contactCache);
   }
