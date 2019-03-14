@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 import ru.stqa.pft1.addressbook1.model.Groups;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -16,7 +15,6 @@ public class GroupModificationTests extends TestBase {
       app.groupsContacts().createGroup(new GroupData().withName("test2"));
     }
   }
-
   @Test
   public void testGroupModification() {
     Groups before = app.groupsContacts().all();
@@ -28,6 +26,4 @@ public class GroupModificationTests extends TestBase {
     Groups after = app.groupsContacts().all();
     assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
   }
-
-
 }

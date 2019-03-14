@@ -42,7 +42,5 @@ public class AddressBookModification extends TestBase {
     assertThat(after, equalTo(before.withOutc(modifiedContact).withAddedc(contact)));
 
   }
-
-
 }
 

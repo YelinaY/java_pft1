@@ -46,6 +46,7 @@ public class GroupContactHelper extends HelperBase {
     type(By.name("homepage"), contactData.getUserhomepage());
     type(By.name("address2"), contactData.getUseraddress2());
     type(By.name("notes"), contactData.getUsernotes());
+    attach(By.name("photo"), contactData.getPhoto());
   }
 
   public void initGroupCreation() {
@@ -307,7 +308,7 @@ public class GroupContactHelper extends HelperBase {
     return new ContactData().
             withId(contact.getId()).withUseremail(email).withUseremail2(email2).withUseremail3(email3);
   }
-  }
+}
 
 
 
