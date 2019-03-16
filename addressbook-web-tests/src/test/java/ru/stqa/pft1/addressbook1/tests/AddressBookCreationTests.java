@@ -1,9 +1,14 @@
 package ru.stqa.pft1.addressbook1.tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.Contacts;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -23,18 +28,26 @@ public class AddressBookCreationTests extends TestBase {
    before.withAddedc(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 */
+@DataProvider
+public Iterator<Object[]> validContacts(){
+  List<Object[]> list = new ArrayList<Object[]>();
+  list.add(new Object[]{new ContactData().withUserfirstname("first name 1").withUserlastname("last name 1")});
+  list.add(new Object[]{new ContactData().withUserfirstname("first name 2").withUserlastname("last name 2")});
+  list.add(new Object[]{new ContactData().withUserfirstname("first name 3").withUserlastname("last name 3")});
+  return  list.iterator();
+}
 
-  @Test
-  public void testNewAddressBookCreations() {
-    app.groupsContacts().gotoHomePage();
-    app.groupsContacts().initAddressBookCreation();
-    File photo = new File("src/test/resources/png.png");
-    app.groupsContacts().fillAddressBookForm(new ContactData().
-            withUserfirstname("Eлена").withUserlastname("Yelina").withPhoto(photo));
-    app.groupsContacts().submitNewAddressBook();
-    app.groupsContacts().gotoHomePage();
+  @Test (dataProvider = "validContacts")
+  public void testNewAddressBookCreations(ContactData contact) {
+      app.groupsContacts().gotoHomePage();
+      app.groupsContacts().initAddressBookCreation();
+      File photo = new File("src/test/resources/png.png");
+      app.groupsContacts().fillAddressBookForm(new ContactData().
+              withUserfirstname("Eлена").withUserlastname("Yelina").withPhoto(photo));
+      app.groupsContacts().submitNewAddressBook();
+      app.groupsContacts().gotoHomePage();
+    }
   }
-
 /*
   @Test
   public void testCurrentDir() {
@@ -45,4 +58,4 @@ public class AddressBookCreationTests extends TestBase {
     System.out.println(photo.exists());
   }
 */
-}
+
