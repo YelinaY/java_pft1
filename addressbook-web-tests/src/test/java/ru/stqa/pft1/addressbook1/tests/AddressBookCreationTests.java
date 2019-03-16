@@ -4,7 +4,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.ContactData;
 import ru.stqa.pft1.addressbook1.model.Contacts;
-import java.io.File;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,11 +30,15 @@ public class AddressBookCreationTests extends TestBase {
   }
 */
 @DataProvider
-public Iterator<Object[]> validContacts(){
+public Iterator<Object[]> validContacts() throws IOException {
   List<Object[]> list = new ArrayList<Object[]>();
-  list.add(new Object[]{new ContactData().withUserfirstname("first name 1").withUserlastname("last name 1")});
-  list.add(new Object[]{new ContactData().withUserfirstname("first name 2").withUserlastname("last name 2")});
-  list.add(new Object[]{new ContactData().withUserfirstname("first name 3").withUserlastname("last name 3")});
+  BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")));
+  String line = reader.readLine();
+  while (line != null){
+    String [] split = line.split(";");
+    list.add(new Object[]{new ContactData().withUserfirstname(split[0]).withUserlastname(split[1])});
+    line = reader.readLine();
+  }
   return  list.iterator();
 }
 
