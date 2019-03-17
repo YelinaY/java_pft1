@@ -1,15 +1,19 @@
 package ru.stqa.pft1.addressbook1.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import java.io.File;
- @XStreamAlias("contact")
+
+@XStreamAlias("contact")
 public class ContactData {
-   @XStreamOmitField
-   private int id = Integer.MAX_VALUE;
+  @XStreamOmitField
+  private int id = Integer.MAX_VALUE;
+  @Expose
   private String userfirstname;
   private String usermiddlename;
+  @Expose
   private String userlastname;
   private String usernickname;
   private String usercompany;
@@ -65,9 +69,13 @@ public class ContactData {
             '}';
   }
 
-  public int getId() {     return id;   }
+  public int getId() {
+    return id;
+  }
 
-  public String getUserfirstname() {     return userfirstname;  }
+  public String getUserfirstname() {
+    return userfirstname;
+  }
 
   public String getUsermiddlename() {
     return usermiddlename;
