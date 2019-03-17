@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+       <test name="VerifyElements">
+        <classes>
+            <class name="ru.stqa.pft1.addressbook1.tests.ContactPhoneTests" />
+            <class name="ru.stqa.pft1.addressbook1.tests.ContactEmailTests" />
+            <class name="ru.stqa.pft1.addressbook1.tests.ContactAddressTests" />
+        </classes>
+    </test>
+</suite>
