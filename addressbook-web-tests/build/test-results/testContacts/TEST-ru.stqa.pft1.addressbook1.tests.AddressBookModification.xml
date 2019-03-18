@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft1.addressbook1.tests.AddressBookModification" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-03-18T07:44:32" hostname="DESKTOP-J72L990" time="64.932">
+<testsuite name="ru.stqa.pft1.addressbook1.tests.AddressBookModification" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-03-18T20:44:35" hostname="DESKTOP-J72L990" time="50.615">
   <properties/>
-  <testcase name="testAddressBookModification" classname="ru.stqa.pft1.addressbook1.tests.AddressBookModification" time="64.932"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testAddressBookModification" classname="ru.stqa.pft1.addressbook1.tests.AddressBookModification" time="50.615"/>
+  <system-out><![CDATA[22:44:35.618 [Test worker] INFO  r.s.pft1.addressbook1.tests.TestBase - Start test testAddressBookModificationwith parameters []
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

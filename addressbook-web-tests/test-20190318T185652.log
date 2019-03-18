@@ -1,6 +1,0 @@
-9690 [main] INFO  r.s.p.addressbook1.tests.TestBase - Start test testGroupCreatonwith parameters [GroupData{id='2147483647'name='test 0'}]
-41034 [main] INFO  r.s.p.addressbook1.tests.TestBase - Stop test testGroupCreatonwith parameters [GroupData{id='187'name='test 0'}]
-41036 [main] INFO  r.s.p.addressbook1.tests.TestBase - Start test testGroupCreatonwith parameters [GroupData{id='2147483647'name='test 1'}]
-58747 [main] INFO  r.s.p.addressbook1.tests.TestBase - Stop test testGroupCreatonwith parameters [GroupData{id='188'name='test 1'}]
-58748 [main] INFO  r.s.p.addressbook1.tests.TestBase - Start test testGroupCreatonwith parameters [GroupData{id='2147483647'name='test 2'}]
-74389 [main] INFO  r.s.p.addressbook1.tests.TestBase - Stop test testGroupCreatonwith parameters [GroupData{id='189'name='test 2'}]

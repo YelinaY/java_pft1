@@ -71,7 +71,7 @@ public class AddressBookCreationTests extends TestBase {
     app.groupsContacts().initAddressBookCreation();
     File photo = new File("src/test/resources/png.png");
     app.groupsContacts().fillAddressBookForm(new ContactData().
-            withUserfirstname("Eлена").withUserlastname("Yelina").withPhoto(photo));
+            withUserfirstname("Yelena").withUserlastname("Yelina").withPhoto(photo));
     app.groupsContacts().submitNewAddressBook();
     app.groupsContacts().gotoHomePage();
   }

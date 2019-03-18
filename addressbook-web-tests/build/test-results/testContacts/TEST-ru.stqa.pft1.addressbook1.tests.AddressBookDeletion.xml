@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft1.addressbook1.tests.AddressBookDeletion" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-03-18T07:45:37" hostname="DESKTOP-J72L990" time="28.263">
+<testsuite name="ru.stqa.pft1.addressbook1.tests.AddressBookDeletion" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-03-18T20:45:26" hostname="DESKTOP-J72L990" time="23.207">
   <properties/>
-  <testcase name="testGroupDeletion" classname="ru.stqa.pft1.addressbook1.tests.AddressBookDeletion" time="28.263"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testGroupDeletion" classname="ru.stqa.pft1.addressbook1.tests.AddressBookDeletion" time="23.207"/>
+  <system-out><![CDATA[22:45:26.289 [Test worker] INFO  r.s.pft1.addressbook1.tests.TestBase - Start test testGroupDeletionwith parameters []
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
