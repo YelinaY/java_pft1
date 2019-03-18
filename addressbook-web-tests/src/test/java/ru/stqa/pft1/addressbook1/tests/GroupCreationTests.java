@@ -2,6 +2,8 @@ package ru.stqa.pft1.addressbook1.tests;
 
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.GroupData;
@@ -50,7 +52,7 @@ public class GroupCreationTests extends TestBase {
   }}
 
   @Test (dataProvider = "validGroupsFromJson")
-  public void testGroupCreaton(GroupData group) {
+    public void testGroupCreaton(GroupData group) {
       app.groupsContacts().groupPage();
       Groups before = app.groupsContacts().all();
       app.groupsContacts().createGroup(group);
