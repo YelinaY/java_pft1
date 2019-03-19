@@ -20,7 +20,7 @@ public class AddressBookModification extends TestBase {
   @Test
   public void testAddressBookModification() {
     app.groupsContacts().gotoHomePage();
-    Contacts before = app.groupsContacts().allc();
+    Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData().
             withId(modifiedContact.getId()).withUserfirstname("Eлена").withUserlastname("Yelina").
@@ -32,21 +32,12 @@ public class AddressBookModification extends TestBase {
 
     app.groupsContacts().modifyContact(contact);
     assertThat(app.groupsContacts().contactCount(), equalTo(before.size()));
-    Contacts after = app.groupsContacts().allc();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withOutc(modifiedContact).withAddedc(contact)));
 
   }
 }
 /*
-
-@BeforeMethod
-  public void ensurePreconditions() {
-    if (app.db().contacts().size() == 0) {
-      app.goTo().homePage();
-      app.contact().create(new ContactData()
-              .withFirstname("Karina").withLastname("Kuznetsova").withAddress("Saint-Petersburg").withHomePhone("111").withMobilePhone("222").withWorkPhone("333").withEmail1("email@email.com"));
-    }
-  }
 
   @Test
   public void testContactEdit() throws Exception {
