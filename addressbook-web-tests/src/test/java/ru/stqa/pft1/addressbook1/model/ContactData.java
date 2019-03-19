@@ -22,15 +22,13 @@ public class ContactData {
   @Id
   @Column (name = "id")
   private int id = Integer.MAX_VALUE;
-  @Expose
+
   @Column(name ="firstname")
-  @Type(type = "text")
   private String userfirstname;
   @Transient
   private String usermiddlename;
 
   @Column(name ="lastname")
-  @Type(type = "text")
   private String userlastname;
   @Transient
   private String usernickname;
