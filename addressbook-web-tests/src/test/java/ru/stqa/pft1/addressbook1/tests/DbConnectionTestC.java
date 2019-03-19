@@ -20,7 +20,6 @@ public class DbConnectionTestC {
         contacts.add(new ContactData().withId(rs.getInt("id")).withUserfirstname(rs.getString("firstname"))
                 .withUserlastname(rs.getString("lastname")));
 
-        // groups.add (new GroupData().withId(rs.getInt("group_id")).withName(rs.getString("group_name")).
       }
       rs.close();
       st.close();
