@@ -53,16 +53,21 @@ public class GroupCreationTests extends TestBase {
 
   @Test (dataProvider = "validGroupsFromJson")
     public void testGroupCreaton(GroupData group) {
-      app.groupsContacts().groupPage();
-      Groups before = app.groupsContacts().all();
+    Groups before = app.db().groups();
+    app.groupsContacts().groupPage();
       app.groupsContacts().createGroup(group);
       assertThat(app.groupsContacts().groupCount(), equalTo(before.size() + 1));
-      Groups after = app.groupsContacts().all();
+    Groups after = app.db().groups();
       assertThat(after.size(), equalTo(before.size() + 1));
 
       assertThat(after, equalTo(
               before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
+
+
+
+
+
 
 /*
   @Test // тест проверки что нельзя создать группу с именем содержащем '
