@@ -10,19 +10,19 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class AddressBookDeletion extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
-    app.groupsContacts().gotoHomePage();
-    if (!app.groupsContacts().isThereAddressBook()) {
-      app.groupsContacts().createContact(new ContactData().withUserfirstname("Yelena").withUserlastname("Yelin"));
+    if (app.db().contacts().size() == 0) {
+      app.groupsContacts().gotoHomePage();
+        app.groupsContacts().createContact(new ContactData().withUserfirstname("Yelena").withUserlastname("Yelin"));
+      }
     }
-  }
   @Test
   public void testGroupDeletion() {
     app.groupsContacts().gotoHomePage();
-    Contacts before = app.groupsContacts().allc();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
     app.groupsContacts().deleteContact(deletedContact);
     assertThat(app.groupsContacts().contactCount(), equalTo(before.size() - 1));
-    Contacts after = app.groupsContacts().allc();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withOutc(deletedContact)));
   }
 }
