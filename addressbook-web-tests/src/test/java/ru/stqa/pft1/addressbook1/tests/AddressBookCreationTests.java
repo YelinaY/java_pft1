@@ -67,6 +67,7 @@ public class AddressBookCreationTests extends TestBase {
 
   @Test(dataProvider = "validContactsFromJson")
   public void testNewAddressBookCreations(ContactData contact) {
+   Contacts  before = app.db().contacts();
     app.groupsContacts().gotoHomePage();
     app.groupsContacts().initAddressBookCreation();
     File photo = new File("src/test/resources/png.png");
@@ -74,6 +75,8 @@ public class AddressBookCreationTests extends TestBase {
             withUserfirstname("Yelena").withUserlastname("Yelina").withPhoto(photo));
     app.groupsContacts().submitNewAddressBook();
     app.groupsContacts().gotoHomePage();
+    Contacts  after = app.db().contacts();
+
   }
 }
 /*
