@@ -69,17 +69,18 @@ public class AddressBookCreationTests extends TestBase {
 
   @Test(dataProvider = "validContactsFromJson")
   public void testNewAddressBookCreations(ContactData contact) {
-   Contacts  before = app.db().contacts();
-   Groups groups = app.db().groups();
+   Contacts  beforeG = app.db().contacts();
+   Groups before = app.db().groups();
     File photo = new File("src/test/resources/png.png");
     ContactData newContact = new ContactData().withFirstname("Yelena").withLastname("Yelina").
-            withPhoto(photo).inGroup(groups.iterator().next());
+            withPhoto(photo).inGroup(before.iterator().next());
     app.groupsContacts().gotoHomePage();
     app.groupsContacts().initAddressBookCreation();
     app.groupsContacts().fillAddressBookForm(newContact, true);
     app.groupsContacts().submitNewAddressBook();
     app.groupsContacts().gotoHomePage();
-    Contacts  after = app.db().contacts();
+    Contacts  afterC = app.db().contacts();
+    Groups afterG = app.db().groups();
     verifyContactListUI();
 
   }
