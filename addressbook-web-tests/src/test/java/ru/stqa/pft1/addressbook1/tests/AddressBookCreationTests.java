@@ -76,6 +76,7 @@ public class AddressBookCreationTests extends TestBase {
     app.groupsContacts().submitNewAddressBook();
     app.groupsContacts().gotoHomePage();
     Contacts  after = app.db().contacts();
+    verifyContactListUI();
 
   }
 }

@@ -34,8 +34,9 @@ public class AddressBookModification extends TestBase {
     assertThat(app.groupsContacts().contactCount(), equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withOutc(modifiedContact).withAddedc(contact)));
-
+    verifyContactListUI();
   }
+
 }
 /*
 
