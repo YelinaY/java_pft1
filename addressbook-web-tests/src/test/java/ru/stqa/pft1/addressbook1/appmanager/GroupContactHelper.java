@@ -8,6 +8,11 @@ import ru.stqa.pft1.addressbook1.model.Contacts;
 import ru.stqa.pft1.addressbook1.model.GroupData;
 import ru.stqa.pft1.addressbook1.model.Groups;
 
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+
+import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +35,7 @@ public class GroupContactHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void fillAddressBookForm(ContactData contactData) {
+  public void fillAddressBookForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
@@ -40,7 +45,14 @@ public class GroupContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
-
+    if (creation) {
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
 
   public void initGroupCreation() {
@@ -129,17 +141,24 @@ public class GroupContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public void createContact(ContactData contactData) {
+  public void createContact(ContactData contact) {
     gotoHomePage();
-    initAddressBookCreation();
-    fillAddressBookForm(new ContactData().withFirstname("Eлена").withLastname("Yelina").
-            withAddress("Paris, Royal sq.").withHomePhone("+1111111111").
-            withMobilePhone("+33333333").withEmail1("mail@mail.com").
-            withEmail2("mail1@mail.com").withEmail3("mail3@mail.com").withAddress("Minsk").
-            withWorkPhone("+5555555555"));
+    initContactCreation();
+    fillAddressBookForm(contact, true);
+    submitContactCreation();
     contactCache = null;
-    submitNewAddressBook();
+    gotoHomePage();
   }
+  public void submitContactCreation() {
+    click(By.xpath("(//input[@name='submit'])[2]"));
+  }
+
+
+  public void initContactCreation() {
+
+    click(By.linkText("add new"));
+  }
+
 
   public int contactCount() {
     return wd.findElements(By.name("selected[]")).size();
@@ -220,7 +239,7 @@ public class GroupContactHelper extends HelperBase {
 
   public void modifyContact(ContactData contact) {
     editAddressBookById(contact.getId());
-    fillAddressBookForm(contact);
+    fillAddressBookForm(contact, true);
     contactCache = null;
     updateAddressBook();
   }

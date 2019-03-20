@@ -13,6 +13,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import com.google.gson.*;
+import ru.stqa.pft1.addressbook1.model.Groups;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -68,11 +70,13 @@ public class AddressBookCreationTests extends TestBase {
   @Test(dataProvider = "validContactsFromJson")
   public void testNewAddressBookCreations(ContactData contact) {
    Contacts  before = app.db().contacts();
+   Groups groups = app.db().groups();
+    File photo = new File("src/test/resources/png.png");
+    ContactData newContact = new ContactData().withFirstname("Yelena").withLastname("Yelina").
+            withPhoto(photo).inGroup(groups.iterator().next());
     app.groupsContacts().gotoHomePage();
     app.groupsContacts().initAddressBookCreation();
-    File photo = new File("src/test/resources/png.png");
-    app.groupsContacts().fillAddressBookForm(new ContactData().
-            withFirstname("Yelena").withLastname("Yelina").withPhoto(photo));
+    app.groupsContacts().fillAddressBookForm(newContact, true);
     app.groupsContacts().submitNewAddressBook();
     app.groupsContacts().gotoHomePage();
     Contacts  after = app.db().contacts();
@@ -80,14 +84,4 @@ public class AddressBookCreationTests extends TestBase {
 
   }
 }
-/*
-  @Test
-  public void testCurrentDir() {
-    File currentDir = new File(".");
-    System.out.println(currentDir.getAbsolutePath());
-    File photo = new File("src/test/resources/png.png");
-    System.out.println(photo.getAbsolutePath());
-    System.out.println(photo.exists());
-  }
-*/
 
