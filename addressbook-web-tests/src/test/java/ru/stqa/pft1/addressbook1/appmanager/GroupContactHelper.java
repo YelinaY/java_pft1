@@ -31,21 +31,15 @@ public class GroupContactHelper extends HelperBase {
   }
 
   public void fillAddressBookForm(ContactData contactData) {
-    type(By.name("firstname"), contactData.getUserfirstname());
-    type(By.name("middlename"), contactData.getUsermiddlename());
-    type(By.name("lastname"), contactData.getUserlastname());
-    type(By.name("nickname"), contactData.getUsernickname());
-    type(By.name("company"), contactData.getUsercompany());
-    type(By.name("address"), contactData.getUseraddress());
-    type(By.name("home"), contactData.getUserhomephone());
-    type(By.name("mobile"), contactData.getUsermobilephone());
-    type(By.name("work"), contactData.getUserworkphone());
-    type(By.name("email"), contactData.getUseremail());
-    type(By.name("email2"), contactData.getUseremail2());
-    type(By.name("email3"), contactData.getUseremail3());
-    type(By.name("homepage"), contactData.getUserhomepage());
-    type(By.name("address2"), contactData.getUseraddress2());
-    type(By.name("notes"), contactData.getUsernotes());
+    type(By.name("firstname"), contactData.getFirstname());
+    type(By.name("lastname"), contactData.getLastname());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomePhone());
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("email"), contactData.getEmail1());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
 
   }
 
@@ -138,12 +132,11 @@ public class GroupContactHelper extends HelperBase {
   public void createContact(ContactData contactData) {
     gotoHomePage();
     initAddressBookCreation();
-    fillAddressBookForm(new ContactData().withUserfirstname("Eлена").withUserlastname("Yelina").
-            withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
-            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").
-            withUsermobilephone("+33333333").withUseremail("mail@mail.com").
-            withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
-            withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes"));
+    fillAddressBookForm(new ContactData().withFirstname("Eлена").withLastname("Yelina").
+            withAddress("Paris, Royal sq.").withHomePhone("+1111111111").
+            withMobilePhone("+33333333").withEmail1("mail@mail.com").
+            withEmail2("mail1@mail.com").withEmail3("mail3@mail.com").withAddress("Minsk").
+            withWorkPhone("+5555555555"));
     contactCache = null;
     submitNewAddressBook();
   }
@@ -184,10 +177,10 @@ public class GroupContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
-      String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
-      String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
+      String firstname = element.findElement(By.xpath(".//td[3]")).getText();
+      String lastname = element.findElement(By.xpath(".//td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withUserfirstname(userfirstname).withUserlastname(userlastname));
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
   }
@@ -203,14 +196,14 @@ public class GroupContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      String userlastname = element.findElement(By.xpath(".//td[2]")).getText();
-      String userfirstname = element.findElement(By.xpath(".//td[3]")).getText();
+      String lastname = element.findElement(By.xpath(".//td[2]")).getText();
+      String firstname = element.findElement(By.xpath(".//td[3]")).getText();
       String allPhones = element.findElement(By.xpath(".//td[6]")).getText();
       String allEmails = element.findElement(By.xpath(".//td[5]")).getText();
       String address = element.findElement(By.xpath(".//td[4]")).getText();
-      contactCache.add(new ContactData().withId(id).withUserfirstname(userfirstname).
-              withUserlastname(userlastname).withAllPhones(allPhones)
-              .withAllEmails(allEmails).withUseraddress(address));
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).
+              withLastname(lastname).withAllPhones(allPhones)
+              .withAllEmails(allEmails).withAddress(address));
     }
     return new Contacts(contactCache);
   }
@@ -231,9 +224,21 @@ public class GroupContactHelper extends HelperBase {
     contactCache = null;
     updateAddressBook();
   }
+  /*
+  public void modify(ContactData contact) {
+    initContactEditById(contact.getId());
+    fillContactForm(contact, false);
+    submitContactEdit();
+    waitForSuccessMessage();
+    contactCache = null;
+    returnToHomePage();
+  }
+*/
+
+
 
   private void editAddressBookById(int id) {
-    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+    click(By.cssSelector("a[href='edit.php?id=" + id + "']"));
   }
 
 
@@ -287,8 +292,8 @@ public class GroupContactHelper extends HelperBase {
     String work = wd.findElement(By.name("work")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().
-            withId(contact.getId()).withUserfirstname(firstname).withUserlastname(lastname).
-            withUserhomephone(home).withUsermobilephone(mobile).withUserworkphone(work);
+            withId(contact.getId()).withFirstname(firstname).withLastname(lastname).
+            withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
   }
 
   public ContactData infoFromAddressForm(ContactData contact) {
@@ -296,7 +301,7 @@ public class GroupContactHelper extends HelperBase {
     String address = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().
-            withId(contact.getId()).withUseraddress(address);
+            withId(contact.getId()).withAddress(address);
   }
 
   public ContactData infoFromEmail(ContactData contact) {
@@ -306,7 +311,7 @@ public class GroupContactHelper extends HelperBase {
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().
-            withId(contact.getId()).withUseremail(email).withUseremail2(email2).withUseremail3(email3);
+            withId(contact.getId()).withEmail1(email).withEmail2(email2).withEmail3(email3);
   }
 }
 

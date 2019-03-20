@@ -16,7 +16,7 @@ public class ContactPhoneTests extends TestBase {
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
   }
   private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getUserhomephone(), contact.getUsermobilephone(), contact.getUserworkphone()).
+    return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()).
             stream().filter((s) -> !s.equals("")).
             map(ContactPhoneTests::cleaned).
             collect(Collectors.joining("\n"));

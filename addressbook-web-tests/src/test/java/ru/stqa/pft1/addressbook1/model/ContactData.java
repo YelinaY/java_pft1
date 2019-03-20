@@ -1,18 +1,13 @@
 package ru.stqa.pft1.addressbook1.model;
 
-import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -20,61 +15,99 @@ import java.io.File;
 public class ContactData {
   @XStreamOmitField
   @Id
-  @Column (name = "id")
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
-
-  @Column(name ="firstname")
-  private String userfirstname;
-  @Transient
-  private String usermiddlename;
-
-  @Column(name ="lastname")
-  private String userlastname;
-  @Transient
-  private String usernickname;
-  @Transient
-  private String usercompany;
-  @Transient
-  private String useraddress;
-  @Transient
-  private String userhomephone;
-  @Transient
-  private String usermobilephone;
-  @Transient
-  private String userworkphone;
-  @Transient
-  private String useremail;
-  @Transient
-  private String useremail2;
-  @Transient
-  private String useremail3;
-  @Transient
-  private String userhomepage;
-  @Transient
-  private String useraddress2;
-  @Transient
-  private String usernotes;
+  @Column(name = "firstname")
+  private String firstname;
+  @Column(name = "lastname")
+  private String lastname;
+  @Column(name = "address")
+  @Type(type = "text")
+  private String address;
+  @Column(name = "mobile")
+  @Type(type = "text")
+  private String mobilePhone;
+  @Column(name = "home")
+  @Type(type = "text")
+  private String homePhone;
+  @Column(name = "work")
+  @Type(type = "text")
+  private String workPhone;
   @Transient
   private String allPhones;
+  @Column(name = "email")
+  @Type(type = "text")
+  private String email1;
+  @Column(name = "email2")
+  @Type(type = "text")
+  private String email2;
+  @Column(name = "email3")
+  @Type(type = "text")
+  private String email3;
   @Transient
   private String allEmails;
-  @Expose
-  @Column(name ="photo")
+  @Column(name = "photo")
   @Type(type = "text")
   private String photo;
 
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
-  public File getPhoto() {
-    return new File(photo);
-  }
-
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
+  public ContactData withId(int id) {
+    this.id = id;
     return this;
   }
 
-  public String getAllEmails() {
-    return allEmails;
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public ContactData withEmail1(String email1) {
+    this.email1 = email1;
+    return this;
+  }
+
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
   }
 
   public ContactData withAllEmails(String allEmails) {
@@ -82,90 +115,63 @@ public class ContactData {
     return this;
   }
 
-
-  public String getAllPhones() {
-    return allPhones;
-  }
-
-  public ContactData withAllPhones(String allPhones) {
-    this.allPhones = allPhones;
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
     return this;
-  }
-
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", userfirstname='" + userfirstname + '\'' +
-            ", userlastname='" + userlastname + '\'' +
-            '}';
   }
 
   public int getId() {
     return id;
   }
 
-  public String getUserfirstname() {
-    return userfirstname;
+  public String getFirstname() {
+    return firstname;
   }
 
-  public String getUsermiddlename() {
-    return usermiddlename;
+  public String getLastname() {
+    return lastname;
   }
 
-  public String getUserlastname() {
-    return userlastname;
+  public String getAddress() {
+    return address;
   }
 
-  public String getUsernickname() {
-    return usernickname;
+  public String getMobilePhone() {
+    return mobilePhone;
   }
 
-  public String getUsercompany() {
-    return usercompany;
+  public String getHomePhone() {
+    return homePhone;
   }
 
-  public String getUseraddress() {
-    return useraddress;
+  public String getWorkPhone() {
+    return workPhone;
   }
 
-  public String getUserhomephone() {
-    return userhomephone;
+  public String getAllPhones() {
+    return allPhones;
   }
 
-  public String getUsermobilephone() {
-    return usermobilephone;
+  public String getEmail1() {
+    return email1;
   }
 
-  public String getUserworkphone() {
-    return userworkphone;
+  public String getEmail2() {
+    return email2;
   }
 
-  public String getUseremail() {
-    return useremail;
+  public String getEmail3() {
+    return email3;
   }
 
-  public String getUseremail2() {
-    return useremail2;
+  public String getAllEmails() {
+    return allEmails;
   }
 
-  public String getUseremail3() {
-    return useremail3;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
-  public String getUserhomepage() {
-    return userhomepage;
-  }
-
-  public String getUseraddress2() {
-    return useraddress2;
-  }
-
-
-  public String getUsernotes() {
-    return usernotes;
-  }
 
   @Override
   public boolean equals(Object o) {
@@ -175,102 +181,50 @@ public class ContactData {
     ContactData that = (ContactData) o;
 
     if (id != that.id) return false;
-    if (userfirstname != null ? !userfirstname.equals(that.userfirstname) : that.userfirstname != null) return false;
-    return userlastname != null ? userlastname.equals(that.userlastname) : that.userlastname == null;
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
+    if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+    return email1 != null ? email1.equals(that.email1) : that.email1 == null;
   }
 
   @Override
   public int hashCode() {
     int result = id;
-    result = 31 * result + (userfirstname != null ? userfirstname.hashCode() : 0);
-    result = 31 * result + (userlastname != null ? userlastname.hashCode() : 0);
+    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (email1 != null ? email1.hashCode() : 0);
     return result;
   }
 
-  //public ContactData setId(int id) {this.id=id;return this;}
+  public File getPhoto() {
+    if (photo == null) {
+      return null;
+    } else {
+      return new File(photo);
+    }
+  }
 
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
 
-  public ContactData withId(int id) {
-    this.id = id;
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
     return this;
   }
 
-  public ContactData withUserfirstname(String userfirstname) {
-    this.userfirstname = userfirstname;
+  private Object readResolve() {
+    groups = new HashSet<GroupData>();
     return this;
   }
-
-  public ContactData withUsermiddlename(String usermiddlename) {
-    this.usermiddlename = usermiddlename;
-    return this;
-  }
-
-  public ContactData withUserlastname(String userlastname) {
-    this.userlastname = userlastname;
-    return this;
-  }
-
-  public ContactData withUsernickname(String usernickname) {
-    this.usernickname = usernickname;
-    return this;
-  }
-
-  public ContactData withtUsercompany(String usercompany) {
-    this.usercompany = usercompany;
-    return this;
-  }
-
-  public ContactData withUseraddress(String useraddress) {
-    this.useraddress = useraddress;
-    return this;
-  }
-
-  public ContactData withUserhomephone(String userhomephone) {
-    this.userhomephone = userhomephone;
-    return this;
-  }
-
-  public ContactData withUsermobilephone(String usermobilephone) {
-    this.usermobilephone = usermobilephone;
-    return this;
-  }
-
-  public ContactData withUserworkphone(String userworkphone) {
-    this.userworkphone = userworkphone;
-    return this;
-  }
-
-
-  public ContactData withUseremail(String useremail) {
-    this.useremail = useremail;
-    return this;
-  }
-
-  public ContactData withUseremail2(String useremail2) {
-    this.useremail2 = useremail2;
-    return this;
-  }
-
-  public ContactData withUseremail3(String useremail3) {
-    this.useremail3 = useremail3;
-    return this;
-  }
-
-  public ContactData withUserhomepage(String userhomepage) {
-    this.userhomepage = userhomepage;
-    return this;
-  }
-
-  public ContactData withUseraddress2(String useraddress2) {
-    this.useraddress2 = useraddress2;
-    return this;
-  }
-
-
-  public ContactData withUsernotes(String usernotes) {
-    this.usernotes = usernotes;
-    return this;
-  }
-
 }
-

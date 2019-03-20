@@ -72,15 +72,15 @@ public class ContactDataGenerator {
     System.out.println(new File(".").getAbsolutePath());
     try (Writer writer = new FileWriter(file)) {
       for (ContactData contact : contacts) {
-        writer.write(String.format("%s;%s;\n", contact.getUserfirstname(), contact.getUserlastname()));
+        writer.write(String.format("%s;%s;\n", contact.getFirstname(), contact.getLastname()));
       }
     }
   }
   private List<ContactData> generateContacts(int count) {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++) {
-      contacts.add(new ContactData().withUserfirstname(String.format("firstName %s", i)).
-              withUserlastname(String.format("lastName %s", i)));
+      contacts.add(new ContactData().withFirstname(String.format("firstName %s", i)).
+              withLastname(String.format("lastName %s", i)));
     }
     return contacts;
   }

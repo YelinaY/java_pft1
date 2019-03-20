@@ -14,7 +14,7 @@ public class AddressBookModification extends TestBase {
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
       app.groupsContacts().gotoHomePage();
-      app.groupsContacts().createContact(new ContactData().withUserfirstname("Yelena").withUserlastname("Yelin"));
+      app.groupsContacts().createContact(new ContactData(). withFirstname("Yelena").withLastname("Yelina"));
     }
   }
   @Test
@@ -22,14 +22,8 @@ public class AddressBookModification extends TestBase {
     app.groupsContacts().gotoHomePage();
     Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
-    ContactData contact = new ContactData().
-            withId(modifiedContact.getId()).withUserfirstname("Eлена").withUserlastname("Yelina").
-            withUsermiddlename("Yel").withUsernickname("Lina").withtUsercompany("TCWD").
-            withUseraddress("Paris, Royal sq.").withUserhomephone("+1111111111").
-            withUsermobilephone("+33333333").withUseremail("mail@mail.com").
-            withUseremail2("mail1@mail.com").withUseremail3("mail3@mail.com").withUserhomepage("URL").
-            withUseraddress("Minsk").withUserworkphone("+5555555555").withUsernotes("Notes");
-
+    ContactData contact = new ContactData()
+            .withId(modifiedContact.getId()).withFirstname("test1").withLastname("test2").withAddress("test3").withHomePhone("test4").withMobilePhone("test5").withEmail1("test6");
     app.groupsContacts().modifyContact(contact);
     assertThat(app.groupsContacts().contactCount(), equalTo(before.size()));
     Contacts after = app.db().contacts();
@@ -38,7 +32,16 @@ public class AddressBookModification extends TestBase {
   }
 
 }
-/*
+/* app.goTo().homePage();
+    Contacts before = app.db().contacts();
+    ContactData modifiedContact = before.iterator().next();
+    ContactData contact = new ContactData()
+            .withId(modifiedContact.getId()).withFirstname("test1").withLastname("test2").withAddress("test3").withHomePhone("test4").withMobilePhone("test5").withEmail1("test6");
+    app.contact().modify(contact);
+    assertThat(app.contact().count(), equalTo(before.size()));
+    Contacts after = app.db().contacts();
+    assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    verifyContactListInUi();
 
   @Test
   public void testContactEdit() throws Exception {

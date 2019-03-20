@@ -17,8 +17,9 @@ public class DbConnectionTestC {
 
       Contacts contacts = new Contacts();
       while (rs.next()) {
-        contacts.add(new ContactData().withId(rs.getInt("id")).withUserfirstname(rs.getString("firstname"))
-                .withUserlastname(rs.getString("lastname")));
+        contacts.add(new ContactData().withId(rs.getInt("id")).
+                withFirstname(rs.getString("firstname")).withLastname(rs.getString("lastname")));
+
 
       }
       rs.close();

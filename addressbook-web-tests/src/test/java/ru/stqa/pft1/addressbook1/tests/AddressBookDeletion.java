@@ -12,7 +12,7 @@ public class AddressBookDeletion extends TestBase {
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
       app.groupsContacts().gotoHomePage();
-        app.groupsContacts().createContact(new ContactData().withUserfirstname("Yelena").withUserlastname("Yelin"));
+        app.groupsContacts().createContact(new ContactData().withFirstname("Yelena").withLastname("Yelin"));
       }
     }
   @Test

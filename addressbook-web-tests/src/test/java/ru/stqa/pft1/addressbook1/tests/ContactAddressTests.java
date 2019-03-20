@@ -13,7 +13,7 @@ public class ContactAddressTests extends TestBase {
     app.groupsContacts().gotoHomePage();
     ContactData contact = app.groupsContacts().allc().iterator().next();
     ContactData contactInfoFromAddress = app.groupsContacts().infoFromAddressForm(contact);
-    assertThat(contact.getUseraddress(), equalTo(cleaned(contactInfoFromAddress.getUseraddress())));
+    assertThat(contact.getAddress(), equalTo(cleaned(contactInfoFromAddress.getAddress())));
 
   }
   public String cleaned(String address) {
