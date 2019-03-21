@@ -59,6 +59,11 @@ public class TestBase {
               withId(g.getId()).withName(g.getName())).collect(Collectors.toSet())));
     }
   }
+
+
+
+
+
   public void verifyContactListUI(){
     if (Boolean.getBoolean("verifyUI")) {
       Contacts dbContacts = app.db().contacts();
