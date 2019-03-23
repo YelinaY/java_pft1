@@ -2,7 +2,6 @@ package ru.stqa.pft1.addressbook1.tests;
 
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft1.addressbook1.model.ContactData;
@@ -14,7 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import com.google.gson.*;
-import ru.stqa.pft1.addressbook1.model.GroupData;
 import ru.stqa.pft1.addressbook1.model.Groups;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -36,14 +34,6 @@ public class AddressBookCreationTests extends TestBase {
      before.withAddedc(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
   */
-  @BeforeMethod
-  public void ensurePreconditions() {
-    if(app.db().groups().size()==0){
-      app.groupsContacts().groupPage();
-      app.groupsContacts().createGroup(new GroupData().withName("test2"));
-    }
-  }
-
   @DataProvider
   public Iterator<Object[]> validContactsFromXml() throws IOException {
    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))) {
@@ -79,17 +69,18 @@ public class AddressBookCreationTests extends TestBase {
 
   @Test(dataProvider = "validContactsFromJson")
   public void testNewAddressBookCreations(ContactData contact) {
-   Contacts  before = app.db().contacts();
-   Groups groups = app.db().groups();
+   Contacts  beforeG = app.db().contacts();
+   Groups before = app.db().groups();
     File photo = new File("src/test/resources/png.png");
     ContactData newContact = new ContactData().withFirstname("Yelena").withLastname("Yelina").
-            withPhoto(photo).inGroup(groups.iterator().next());
+            withPhoto(photo).inGroup(before.iterator().next());
     app.groupsContacts().gotoHomePage();
     app.groupsContacts().initAddressBookCreation();
     app.groupsContacts().fillAddressBookForm(newContact, true);
     app.groupsContacts().submitNewAddressBook();
     app.groupsContacts().gotoHomePage();
-    Contacts  after = app.db().contacts();
+    Contacts  afterC = app.db().contacts();
+    Groups afterG = app.db().groups();
     verifyContactListUI();
 
   }
