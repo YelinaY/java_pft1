@@ -46,3 +46,4 @@ public class HbConnectionTestC {
     session.close();
   }
 }
+
