@@ -37,7 +37,6 @@ public class AddressBookCreationTests extends TestBase {
   @DataProvider
   public Iterator<Object[]> validContactsFromXml() throws IOException {
    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))) {
-     ;
      String xml = "";
      String line = reader.readLine();
      while (line != null) {
