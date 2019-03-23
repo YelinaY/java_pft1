@@ -57,7 +57,7 @@ public class ContactCreationTests extends TestBase {
     verifyContactListInUi();
   }
 
-  
+
   @Test(enabled = false)
   public void testBadContactCreation() throws Exception {
     app.goTo().homePage();
