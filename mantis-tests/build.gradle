@@ -11,7 +11,7 @@ dependencies {
 }
 test  {
     useTestNG {
-        suites 'src/test/resources/testng-groups.xml'
+        suites 'src/test/resources/testng.xml'
     }
     if (project.hasProperty('tatget')) {
         systemProperty 'target', "${target}"

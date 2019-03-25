@@ -16,10 +16,13 @@ public class TestBase {
     app.init();
   }
 
-  @AfterSuite
+  @AfterSuite(alwaysRun = true)
   public void tearDown() {
     app.stop();
   }
-}
-  // public ApplicationManager getApp() {  return app; }
 
+  public ApplicationManager getApp() {
+    return app;
+  }
+
+}
