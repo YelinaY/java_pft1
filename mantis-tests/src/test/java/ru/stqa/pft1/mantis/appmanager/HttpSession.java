@@ -2,7 +2,6 @@ package ru.stqa.pft1.mantis.appmanager;
 
 import org.omg.CORBA.NameValuePair;
 import org.openqa.selenium.remote.http.HttpClient;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
