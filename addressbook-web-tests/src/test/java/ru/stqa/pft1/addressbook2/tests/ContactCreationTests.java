@@ -9,9 +9,10 @@ import ru.stqa.pft1.addressbook2.model.Contacts;
 import ru.stqa.pft1.addressbook2.model.GroupData;
 import ru.stqa.pft1.addressbook2.model.Groups;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -63,7 +64,9 @@ public class ContactCreationTests extends TestBase {
     app.goTo().homePage();
     Contacts before = app.db().contacts();
     ContactData contact = new ContactData()
-            .withFirstname("Karina'").withLastname("Kuznetsova").withAddress("Saint-Petersburg").withMobilePhone("80001112233").withEmail1("email@email.com");
+               .withFirstname("Yelena").withLastname("Korsakova").withAddress("Minsk").
+            withHomePhone("1111111111").withMobilePhone("22222222222").withWorkPhone("33333333333").withEmail1("email@email.com");
+
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();

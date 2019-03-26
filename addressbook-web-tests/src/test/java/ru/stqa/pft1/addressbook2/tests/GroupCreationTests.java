@@ -1,15 +1,15 @@
 package ru.stqa.pft1.addressbook2.tests;
 
 import com.thoughtworks.xstream.XStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import  ru.stqa.pft1.addressbook2.model.GroupData;
-import  ru.stqa.pft1.addressbook2.model.Groups;
+import ru.stqa.pft1.addressbook2.model.GroupData;
+import ru.stqa.pft1.addressbook2.model.Groups;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,7 +50,7 @@ public class GroupCreationTests extends TestBase {
   public void testBadGroupCreation() {
     app.goTo().groupPage();
     Groups before = app.db().groups();
-    GroupData group = new GroupData().withName("test'");
+    GroupData group = new GroupData().withName("GROUP'");
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size()));
     Groups after = app.db().groups();

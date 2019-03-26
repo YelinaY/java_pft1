@@ -23,7 +23,8 @@ public class RemovingContactFromGroupTests extends TestBase {
       app.goTo().homePage();
       Groups groups = app.db().groups();
       app.contact().create(new ContactData()
-              .withFirstname("Karina").withLastname("Kuznetsova").withAddress("Saint-Petersburg").withHomePhone("111").withMobilePhone("222").withWorkPhone("333").withEmail1("email@email.com").inGroup(groups.iterator().next()));
+              .withFirstname("Yelena").withLastname("Korsakova").withAddress("Minsk").
+                      withHomePhone("1111111111").withMobilePhone("22222222222").withWorkPhone("33333333333").withEmail1("email@email.com"));
     }
     if (app.db().groups().iterator().next().getContacts().size() == 0) {
       Groups groupList = app.db().groups();
