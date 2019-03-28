@@ -19,14 +19,14 @@ public class DbHelper {
     final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
             .configure() // configures settings from hibernate.cfg.xml
             .build();
-    sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+    sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
   }
 
-  public Users users(){
+  public Users users() {
 
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<UserData> result = session.createQuery( "from UserData where id > 1" ).list();
+    List<UserData> result = session.createQuery("from UserData where id > 1").list();
     session.getTransaction().commit();
     session.close();
     return new Users(result);

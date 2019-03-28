@@ -1,5 +1,6 @@
 package ru.stqa.pft1.mantis.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
   private final Properties properties;
   private WebDriver wd;
+  private DbHelper dbHelper;
+  private PasswordResetHelper resetHelper;
 
   private String browser;
   private RegistrationHelper registrationHelper;
@@ -34,6 +37,7 @@ private FtpHelper ftp;
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    dbHelper = new DbHelper();
 
   }
   public void stop() {
@@ -88,4 +92,27 @@ public JamesHelper james (){
     }
     return jamesHelper;
 }
+  public DbHelper db() {
+    return dbHelper;
+  }
+
+
+
+  public PasswordResetHelper resetHelper() {
+    if (resetHelper == null) {
+      resetHelper = new PasswordResetHelper(this);
+    }
+    return resetHelper;
+  }
+  protected void click(By locator) {
+    wd.findElement(locator).click();
+  }
+
+  public void rootLogin() {
+    wd.findElement(By.name("username")).sendKeys("administrator");
+    wd.findElement(By.name("password")).sendKeys("root");
+    click (By.cssSelector("input[value='Login']"));
+
+
+  }
 }
