@@ -1,4 +1,7 @@
 package ru.stqa.pft1.mantis.appmanager;
+import biz.futureware.mantis.rpc.soap.client.MantisConnectLocator;
+import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
+import biz.futureware.mantis.rpc.soap.client.ProjectData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -6,12 +9,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft1.mantis.model.Project;
 
+import javax.xml.rpc.ServiceException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class ApplicationManager {
   private final Properties properties;
@@ -133,7 +144,18 @@ public class ApplicationManager {
     wd.findElement(By.name("username")).sendKeys("administrator");
     wd.findElement(By.name("password")).sendKeys("root");
     click (By.cssSelector("input[value='Login']"));
-
-
   }
+  public Set<Project> getProjects() throws MalformedURLException, ServiceException, RemoteException {
+    MantisConnectPortType mc = getMantisConnect();
+    ProjectData[] projects = mc.mc_projects_get_user_accessible("administrator", "root");
+    return Arrays.asList(projects).stream()
+            .map((p) -> new Project().withId(p.getId().intValue()).withName(p.getName()))
+            .collect(Collectors.toSet());
+  }
+
+  private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+    return new MantisConnectLocator()
+            .getMantisConnectPort(new URL("http://localhost/mantisbt-1.2.19/api/soap/mantisconnect.php"));
+  }
+
 }
