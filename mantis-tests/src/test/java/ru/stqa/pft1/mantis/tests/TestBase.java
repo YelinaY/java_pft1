@@ -1,5 +1,6 @@
 package ru.stqa.pft1.mantis.tests;
 
+import biz.futureware.mantis.rpc.soap.client.IssueData;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.SkipException;
@@ -36,15 +37,12 @@ public class TestBase {
     return app;
   }
 
-  public boolean isIssueOpen(int issueId) throws MalformedURLException, ServiceException, RemoteException {
-    String adminLogin = app.getProperty("web.adminLogin");
-    String adminPassword = app.getProperty("web.adminPassword");
+  public boolean isIssueOpen(int issueId) throws RemoteException, MalformedURLException, ServiceException {
     MantisConnectPortType mc = app.soap().getMantisConnect();
-    String issueStatus = mc.mc_issue_get(adminLogin, adminPassword, BigInteger.valueOf(issueId)).getStatus().getName();
-    if (issueStatus.equals("closed")) {
-      return false;
-    }
-    return true;
+    IssueData issue = mc.mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(issueId));
+    if (!issue.getStatus().getName().equals("resolved")) {
+      return true;
+    } else return false;
   }
 
   public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
