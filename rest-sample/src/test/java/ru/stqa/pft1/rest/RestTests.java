@@ -25,7 +25,7 @@ public class RestTests  extends TestBase{
        // Assert.assertEquals(newIssues, oldIssues);
     }
 
-    private Set<Issue> getIssues() throws IOException {
+    public Set<Issue> getIssues() throws IOException {
         String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues.json?limit=100"))
                 .returnContent().asString();
         JsonElement parsed = new JsonParser().parse(json);

@@ -27,7 +27,7 @@ public void init (){
         //Assert.assertEquals(newIssues, oldIssues);
     }
 
-    private Set<Issue> getIssues() throws IOException {
+    public Set<Issue> getIssues() throws IOException {
         String json =   RestAssured.get("http://bugify.stqa.ru/api/issues.json?limit=100").asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
