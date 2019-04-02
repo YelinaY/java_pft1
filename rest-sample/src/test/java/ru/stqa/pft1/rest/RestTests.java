@@ -12,16 +12,17 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Set;
 
-public class RestTests {
+public class RestTests  extends TestBase{
 
     @Test
     public void testCreateIssue() throws IOException {
+       skipIfNotFixed(0000010);
         Set<Issue> oldIssues = getIssues();
         Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
         int issueId = createIssue(newIssue);
         Set<Issue> newIssues = getIssues();
         oldIssues.add(newIssue.withId(issueId));
-        //Assert.assertEquals(newIssues, oldIssues);
+       // Assert.assertEquals(newIssues, oldIssues);
     }
 
     private Set<Issue> getIssues() throws IOException {
@@ -33,7 +34,7 @@ public class RestTests {
         }.getType());
     }
 
-    private Executor getExecutor() {
+    public Executor getExecutor() {
         return Executor.newInstance().auth("288f44776e7bec4bf44fdfeb1e646490", "");
     }
 

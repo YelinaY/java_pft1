@@ -10,13 +10,15 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.Set;
-public class RestAssuredTests {
+public class RestAssuredTests extends TestBase {
 @BeforeClass
-public void init(){
+public void init (){
  RestAssured.authentication = RestAssured.basic("288f44776e7bec4bf44fdfeb1e646490", "");
+
 }
     @Test
     public void testCreateIssue() throws IOException {
+       skipIfNotFixed(000010);
         Set<Issue> oldIssues = getIssues();
         Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
         int issueId = createIssue(newIssue);
