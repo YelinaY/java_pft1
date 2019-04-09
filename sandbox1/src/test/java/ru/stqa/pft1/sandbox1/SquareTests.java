@@ -1,5 +1,6 @@
 package ru.stqa.pft1.sandbox1;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SquareTests {
@@ -7,6 +8,7 @@ public class SquareTests {
   public void testArea(){
     Square s = new Square(4);
     assert s.area()==16;
+    Assert.assertEquals(s.area(), 20.0);
   }
 }
 //вычисляется площадь прямоугольника
