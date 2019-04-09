@@ -1,6 +1,6 @@
 package ru.stqa.pft1.sandbox1;
 
-public class CicleWhile {
+public class CycleWhile {
   public static void main(String[] args) {
     int i = 0;
     while (i < 100) {
