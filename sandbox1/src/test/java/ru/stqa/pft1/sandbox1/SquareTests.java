@@ -8,7 +8,7 @@ public class SquareTests {
   public void testArea(){
     Square s = new Square(4);
     assert s.area()==16;
-    Assert.assertEquals(s.area(), 20.0);
+    Assert.assertEquals(s.area(), 16.0);
   }
 }
 //вычисляется площадь прямоугольника
