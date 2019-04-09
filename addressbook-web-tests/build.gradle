@@ -58,4 +58,7 @@ task testVerifyElements(type: Test) {
             systemProperty 'verifyUI', "${verifyUI}"
         }
 
+        test {
+            useTestNG()
+        }
             }
