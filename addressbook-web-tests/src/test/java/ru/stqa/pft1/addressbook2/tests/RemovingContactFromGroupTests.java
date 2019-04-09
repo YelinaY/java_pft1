@@ -1,4 +1,4 @@
-package ru.stqa.pft1.addressbook2.tests;
+/*package ru.stqa.pft1.addressbook2.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -48,4 +48,4 @@ public class RemovingContactFromGroupTests extends TestBase {
     app.contact().goBackToAll();
     verifyContactListInUi();
   }
-}
+}*/
